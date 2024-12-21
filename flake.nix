@@ -38,7 +38,7 @@
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
-      darwinConfigurations."simple" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
         modules = [ configuration ];
       };
 
