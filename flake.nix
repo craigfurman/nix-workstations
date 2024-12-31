@@ -8,7 +8,7 @@
   };
 
   outputs =
-    inputs@{
+    {
       self,
       nix-darwin,
       nixpkgs,
