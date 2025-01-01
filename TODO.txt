@@ -1,0 +1,4 @@
+- migrate system settings from ansible-home
+- home-manager shell environment
+- port neovim config
+- `darwin-rebuild switch --flake ~/.config/nix-darwin` alias
