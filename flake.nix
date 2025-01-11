@@ -17,7 +17,7 @@
       system = "aarch64-darwin";
       configuration =
         { pkgs, ... }:
-        nixpkgs.lib.recursiveUpdate {
+        {
           nix.settings.experimental-features = "nix-command flakes";
 
           system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -27,7 +27,9 @@
           system.stateVersion = 5;
 
           nixpkgs.hostPlatform = system;
-        } (import ./darwin.nix);
+
+          imports = [ ./darwin.nix ];
+        };
     in
     {
       # Build darwin flake using:
