@@ -17,27 +17,21 @@
       system = "aarch64-darwin";
       configuration =
         { pkgs, ... }:
-        {
-          # Necessary for using flakes on this system.
+        nixpkgs.lib.recursiveUpdate {
           nix.settings.experimental-features = "nix-command flakes";
 
-          # Enable alternative shell support in nix-darwin.
-          # programs.fish.enable = true;
-
-          # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
 
           # Used for backwards compatibility, please read the changelog before changing.
           # $ darwin-rebuild changelog
           system.stateVersion = 5;
 
-          # The platform the configuration will be used on.
           nixpkgs.hostPlatform = system;
-        };
+        } (import ./darwin.nix);
     in
     {
       # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#simple
+      # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
         modules = [ configuration ];
       };

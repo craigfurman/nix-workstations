@@ -14,3 +14,7 @@ My personal laptop makes use of
 1. `git clone git@github.com:craigfurman/nix-workstations.git ~/.config/nix-darwin`
 1. `nix run nix-darwin -- switch --flake ~/.config/nix-darwin`
 1. After the first run, `darwin-rebuild` should become available.
+
+#### Other config
+
+1. Enable FileVault
