@@ -35,7 +35,10 @@
 
           nixpkgs.overlays = [ overlay ];
 
-          imports = [ ./darwin.nix ];
+          imports = [
+            ./darwin/autokbisw.nix
+            ./darwin/default.nix
+          ];
         };
 
     in

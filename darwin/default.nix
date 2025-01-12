@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.autokbisw ];
-
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {
