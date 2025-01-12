@@ -1,4 +1,3 @@
-- dircolors
 - openssh config, keys with Secretive
 - port graphical apps over (homebrew vs wrapper scripts? MAS?). Remember to
   change dock paths.

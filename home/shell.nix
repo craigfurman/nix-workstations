@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 let
   tintedShellRepo = builtins.fetchGit {
     url = "https://github.com/tinted-theming/tinted-shell.git";
@@ -6,9 +7,13 @@ let
   };
 in
 {
+  home.packages = [ pkgs.coreutils-prefixed ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  programs.dircolors.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -23,6 +28,10 @@ in
 
     oh-my-zsh = {
       enable = true;
+      extraConfig = ''
+        zstyle ':omz:lib:theme-and-appearance' gnu-ls yes
+      '';
+
       theme = "bira";
     };
 
