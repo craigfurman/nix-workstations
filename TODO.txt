@@ -1,6 +1,5 @@
 - dircolors
 - openssh config, keys with Secretive
-- switch to nixfmt once we have a home-manager shell env
 - port graphical apps over (homebrew vs wrapper scripts? MAS?). Remember to
   change dock paths.
 - `darwin-rebuild switch --flake ~/.config/nix-darwin` alias, and maybe one that

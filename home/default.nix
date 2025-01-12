@@ -35,6 +35,7 @@
     age
     curl
     htop
+    nixfmt-rfc-style
     restic
     unixtools.watch
   ];
