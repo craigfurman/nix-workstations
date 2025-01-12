@@ -1,4 +1,3 @@
-- tinted-shell, neovim colorscheme
 - dircolors
 - openssh config, keys with Secretive
 - switch to nixfmt once we have a home-manager shell env
@@ -7,6 +6,8 @@
 - `darwin-rebuild switch --flake ~/.config/nix-darwin` alias, and maybe one that
   does flake-upgrade too
 - garbage collection
+- migrate from ansible: services (just restic?)
+- upstream autokbisw stuff?
 
 neovim
 - symlinks to lua
