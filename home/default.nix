@@ -43,6 +43,11 @@
     nix-direnv.enable = true;
   };
 
+  programs.fzf = {
+    enable = true;
+    defaultCommand = "rg";
+  };
+
   programs.ripgrep = {
     enable = true;
     arguments = [
