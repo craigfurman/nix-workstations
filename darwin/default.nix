@@ -13,7 +13,14 @@
     };
 
     controlcenter.Sound = true;
-    dock.autohide = true;
+
+    dock = {
+      autohide = true;
+      persistent-apps = [
+        "/System/Applications/Launchpad.app"
+        "/Applications/Brave Browser.app"
+      ];
+    };
 
     screensaver = {
       askForPassword = true;
