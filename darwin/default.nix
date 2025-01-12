@@ -1,42 +1,24 @@
+{
+  flake,
+  overlay,
+  system,
+}:
 { pkgs, ... }:
 {
-  security.pam.enableSudoTouchIdAuth = true;
+  nix.settings.experimental-features = "nix-command flakes";
 
-  system.defaults = {
-    NSGlobalDomain = {
-      "com.apple.swipescrolldirection" = false; # disable natural scrolling
-      AppleInterfaceStyleSwitchesAutomatically = true;
-      InitialKeyRepeat = 15;
-      KeyRepeat = 2;
-      NSAutomaticPeriodSubstitutionEnabled = false;
-      NSAutomaticQuoteSubstitutionEnabled = false; # disable smart quotes
-    };
+  system.configurationRevision = flake.rev or flake.dirtyRev or null;
 
-    controlcenter.Sound = true;
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 5;
 
-    dock = {
-      autohide = true;
-      persistent-apps = [
-        "/System/Applications/Launchpad.app"
-        "/Applications/Brave Browser.app"
-      ];
-    };
+  nixpkgs.hostPlatform = system;
 
-    screensaver = {
-      askForPassword = true;
-      askForPasswordDelay = 0;
-    };
+  nixpkgs.overlays = [ overlay ];
 
-    trackpad.Clicking = true;
-  };
-
-  system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToEscape = true;
-  };
-
-  system.startup.chime = false;
-
-  # Integrates with home-manager
-  users.users.craig.home = "/Users/craig";
+  imports = [
+    ./autokbisw.nix
+    ./settings.nix
+  ];
 }

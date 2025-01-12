@@ -19,43 +19,24 @@
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
-      configuration =
-        overlay:
-        { pkgs, ... }:
-        {
-          nix.settings.experimental-features = "nix-command flakes";
 
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
-          system.stateVersion = 5;
-
-          nixpkgs.hostPlatform = system;
-
-          nixpkgs.overlays = [ overlay ];
-
-          imports = [
-            ./darwin/autokbisw.nix
-            ./darwin/default.nix
-          ];
-        };
-
+      overlay = final: prev: {
+        autokbisw = self.packages.${system}.autokbisw;
+      };
     in
     {
       packages.${system} = {
         autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
       };
 
-      overlay = final: prev: {
-        autokbisw = self.packages.${system}.autokbisw;
-      };
-
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
         modules = [
-          (configuration self.overlay)
+          (import ./darwin {
+            inherit overlay system;
+            flake = self;
+          })
 
           home-manager.darwinModules.home-manager
           {

@@ -7,6 +7,7 @@
   does flake-upgrade too
 - garbage collection
 - migrate from ansible: services (just restic?)
+- nix self-upgrade
 - upstream autokbisw stuff?
 
 neovim
