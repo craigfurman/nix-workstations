@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  # TODO: remove homebrew when ready
+  environment.shells = [
+    pkgs.zsh
+    "/opt/homebrew/bin/zsh"
+  ];
+
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {
