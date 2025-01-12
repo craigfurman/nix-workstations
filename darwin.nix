@@ -1,4 +1,7 @@
+{ pkgs, ... }:
 {
+  environment.systemPackages = [ pkgs.autokbisw ];
+
   system.defaults = {
     NSGlobalDomain = {
       "com.apple.swipescrolldirection" = false; # disable natural scrolling

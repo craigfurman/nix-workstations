@@ -20,6 +20,7 @@
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
       configuration =
+        overlay:
         { pkgs, ... }:
         {
           nix.settings.experimental-features = "nix-command flakes";
@@ -32,19 +33,26 @@
 
           nixpkgs.hostPlatform = system;
 
+          nixpkgs.overlays = [ overlay ];
+
           imports = [ ./darwin.nix ];
         };
+
     in
     {
       packages.${system} = {
         autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
       };
 
+      overlay = final: prev: {
+        autokbisw = self.packages.${system}.autokbisw;
+      };
+
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
         modules = [
-          configuration
+          (configuration self.overlay)
 
           home-manager.darwinModules.home-manager
           {
