@@ -42,7 +42,7 @@
           {
             home-manager = {
               useGlobalPkgs = true;
-              useUserPackages = true; # TODO wat
+              useUserPackages = true;
               users.craig = import ./home;
             };
 
