@@ -35,6 +35,7 @@
     age
     curl
     htop
+    restic
     unixtools.watch
   ];
 
