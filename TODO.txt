@@ -1,15 +1,23 @@
-- home-manager shell environment
-- port neovim config
+- fzf
+- tinted-shell, neovim colorscheme
+- dircolors
 - switch to nixfmt once we have a home-manager shell env
-- port graphical apps over (homebrew vs wrapper scripts? MAS?)
-- `darwin-rebuild switch --flake ~/.config/nix-darwin` alias
+- port graphical apps over (homebrew vs wrapper scripts? MAS?). Remember to
+  change dock paths.
+- `darwin-rebuild switch --flake ~/.config/nix-darwin` alias, and maybe one that
+  does flake-upgrade too
+- garbage collection
+
+neovim
+- symlinks to lua
+- seamless kitty navigation
+
+flycut
+- add to login items
+- accessibility: allow it to control computer
 
 Currently unsupported settings
 - Turn keyboard backlight off after 5s
 - Night shift
 - Battery options
 - Spotlight exclusions (search privacy) - currently ~/workspace
-
-flycut
-- add to login items
-- accessibility: allow it to control computer

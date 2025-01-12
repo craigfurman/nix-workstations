@@ -26,4 +26,7 @@
   };
 
   system.startup.chime = false;
+
+  # Integrates with home-manager
+  users.users.craig.home = "/Users/craig";
 }

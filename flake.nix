@@ -5,13 +5,16 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
     {
-      self,
+      home-manager,
       nix-darwin,
       nixpkgs,
+      self,
     }:
     let
       system = "aarch64-darwin";
@@ -35,7 +38,21 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        modules = [
+          configuration
+
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true; # TODO wat
+              users.craig = import ./home;
+            };
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
       };
 
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
