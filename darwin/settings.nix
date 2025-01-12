@@ -8,8 +8,10 @@
       AppleInterfaceStyleSwitchesAutomatically = true;
       InitialKeyRepeat = 15;
       KeyRepeat = 2;
+      NSAutomaticCapitalizationEnabled = false;
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false; # disable smart quotes
+      NSAutomaticSpellingCorrectionEnabled = false;
     };
 
     controlcenter.Sound = true;
