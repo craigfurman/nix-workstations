@@ -18,6 +18,7 @@
     }:
     let
       system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
       configuration =
         { pkgs, ... }:
         {
@@ -35,6 +36,10 @@
         };
     in
     {
+      packages.${system} = {
+        autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
+      };
+
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
@@ -55,6 +60,6 @@
         ];
       };
 
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+      formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
