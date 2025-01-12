@@ -2,6 +2,8 @@
 {
   environment.systemPackages = [ pkgs.autokbisw ];
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   system.defaults = {
     NSGlobalDomain = {
       "com.apple.swipescrolldirection" = false; # disable natural scrolling
