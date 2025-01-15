@@ -23,6 +23,8 @@
       overlay = final: prev: {
         autokbisw = self.packages.${system}.autokbisw;
       };
+
+      craigLib = pkgs.callPackage (import ./lib) { };
     in
     {
       packages.${system} = {
@@ -44,6 +46,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.craig = import ./home;
+              extraSpecialArgs = { inherit craigLib; };
             };
 
             # Optionally, use home-manager.extraSpecialArgs to pass

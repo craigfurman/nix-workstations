@@ -1,4 +1,6 @@
+- seamless vim/kitty navigation
 - openssh config, keys with Secretive
+- port git config
 - port graphical apps over (homebrew vs wrapper scripts? MAS?). Remember to
   change dock paths.
 - `darwin-rebuild switch --flake ~/.config/nix-darwin` alias, and maybe one that
@@ -8,9 +10,6 @@
 - nix self-upgrade
 - upstream autokbisw stuff?
 
-neovim
-- symlinks to lua
-- seamless kitty navigation
 
 flycut
 - add to login items

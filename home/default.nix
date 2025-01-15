@@ -17,7 +17,8 @@
 
   imports = [
     ./git.nix
-    ./neovim.nix
+    ./lang
+    ./neovim
     ./shell.nix
   ];
 
