@@ -48,9 +48,6 @@
               users.craig = import ./home;
               extraSpecialArgs = { inherit craigLib; };
             };
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
         ];
       };
