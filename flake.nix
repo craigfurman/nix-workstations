@@ -35,10 +35,7 @@
       # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
         modules = [
-          (import ./darwin {
-            inherit overlay system;
-            flake = self;
-          })
+          (import ./darwin)
 
           home-manager.darwinModules.home-manager
           {
@@ -46,10 +43,18 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.craig = import ./home;
+
+              # I don't know why, but darwin's specialArgs doesn't propagate
+              # through to home-manager, although the docs imply it should.
               extraSpecialArgs = { inherit craigLib; };
             };
           }
         ];
+
+        specialArgs = {
+          inherit overlay system;
+          flake = self;
+        };
       };
 
       formatter.${system} = pkgs.nixfmt-rfc-style;
