@@ -17,6 +17,7 @@
 
   imports = [
     ./git.nix
+    ./kitty.nix
     ./lang
     ./neovim
     ./shell.nix

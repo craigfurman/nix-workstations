@@ -24,9 +24,11 @@ in
     extraLuaConfig = pkgs.lib.mkBefore (builtins.readFile ./config/prelude.lua);
 
     plugins = with pkgs.vimPlugins; [
+      # Language servers
       (pluginLua "nvim-lspconfig")
       (pluginLua "lspsaga-nvim")
 
+      # Appearance
       {
         plugin = base16-vim;
         config = ''
@@ -34,9 +36,9 @@ in
           colorscheme base16-$BASE16_THEME
         '';
       }
-
       (pluginLua "lualine-nvim")
 
+      # Navigation
       (pluginLua "telescope-nvim")
       (pluginLua "nvim-tree-lua")
       nvim-web-devicons
