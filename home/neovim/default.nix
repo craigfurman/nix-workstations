@@ -12,7 +12,7 @@ in
   imports = [
     ./config.nix
     ./hack.nix
-    ./treesitter.nix # TODO is this working?
+    ./treesitter.nix
   ];
 
   home.file.".config/nvim/lua/hack.lua".source =

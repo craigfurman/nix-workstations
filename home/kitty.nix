@@ -9,6 +9,7 @@ in
     ".config/kitty/get_layout.py".source = "${vim-kitty-navigator}/get_layout.py";
   };
 
+  # vim-kitty-navigator
   programs.neovim.plugins = [ vim-kitty-navigator ];
 
   programs.kitty = {
