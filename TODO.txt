@@ -1,3 +1,4 @@
+- why is telescope slow now?
 - openssh config, keys with Secretive
 - port git config
 - port graphical apps over (homebrew vs wrapper scripts? MAS?). Remember to

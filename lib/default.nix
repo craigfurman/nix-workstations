@@ -6,7 +6,7 @@
         event: fileExtensions: command:
         let
           globs = map (fileExtension: "*.${fileExtension}") fileExtensions;
-          targets = lib.strings.concatStringsSep ", " globs;
+          targets = lib.strings.concatStringsSep "," globs;
         in
         "autocmd ${event} ${targets} ${command}";
     in
