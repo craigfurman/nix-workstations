@@ -37,6 +37,7 @@
 
     age
     curl
+    fd
     htop
     nixfmt-rfc-style
     restic
