@@ -8,7 +8,16 @@ in
     ".config/kitty/get_layout.py".source = "${vim-kitty-navigator}/get_layout.py";
   };
 
-  programs.neovim.plugins = [ vim-kitty-navigator ];
+  programs.neovim.plugins = [
+    {
+      plugin = pkgs.nvim-cmp_kitty;
+      type = "lua";
+      config = ''
+        require('cmp_kitty'):setup()
+      '';
+    }
+    vim-kitty-navigator
+  ];
 
   programs.kitty = {
     keybindings = {

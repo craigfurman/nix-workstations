@@ -22,6 +22,7 @@
 
       overlay = final: prev: {
         autokbisw = self.packages.${system}.autokbisw;
+        nvim-cmp_kitty = self.packages.${system}.nvim-cmp_kitty;
       };
 
       craigLib = pkgs.callPackage (import ./lib) { };
@@ -29,6 +30,7 @@
     {
       packages.${system} = {
         autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
+        nvim-cmp_kitty = pkgs.callPackage ./pkgs/cmp_kitty.nix { };
       };
 
       # Build darwin flake using:
