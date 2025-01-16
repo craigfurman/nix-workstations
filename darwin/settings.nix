@@ -24,10 +24,16 @@
 
     dock = {
       autohide = true;
-      persistent-apps = [
-        "/System/Applications/Launchpad.app"
-        "/Applications/Brave Browser.app"
-      ];
+
+      persistent-apps =
+        let
+          hmApps = [ "kitty" ];
+        in
+        [
+          "/System/Applications/Launchpad.app"
+          "/Applications/Brave Browser.app"
+        ]
+        ++ map (hmApp: "/Users/craig/Applications/Home Manager Apps/${hmApp}.app") hmApps;
     };
 
     screensaver = {
