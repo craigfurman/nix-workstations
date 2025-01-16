@@ -1,3 +1,5 @@
+- nvim-cmp: lsp capbabilities?
+- make a package for https://github.com/garyhurtz/cmp_kitty
 - openssh config, keys with Secretive
 - port git config
 - port graphical apps over (homebrew vs wrapper scripts? MAS?). Remember to
@@ -10,7 +12,6 @@
 - fonts
 - upstream autokbisw stuff?
 - port kitty config to nix rather than text?
-
 
 flycut
 - add to login items

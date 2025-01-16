@@ -43,6 +43,15 @@ in
       (pluginLua "nvim-tree-lua")
       nvim-web-devicons
 
+      # Autocomplete
+      (pluginLua "nvim-cmp")
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
+      luasnip
+      cmp_luasnip
+
       # Core
       vim-commentary
       vim-fugitive
