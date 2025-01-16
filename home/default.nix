@@ -20,6 +20,7 @@
     ./kitty.nix
     ./lang
     ./neovim
+    ./neovim-kitty-integration.nix
     ./shell.nix
   ];
 

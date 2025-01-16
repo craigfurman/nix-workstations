@@ -1,4 +1,3 @@
-- nvim-cmp: lsp capbabilities?
 - make a package for https://github.com/garyhurtz/cmp_kitty
 - openssh config, keys with Secretive
 - port git config
