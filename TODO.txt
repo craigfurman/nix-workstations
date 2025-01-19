@@ -1,5 +1,4 @@
 - openssh config, keys with Secretive
-- port git config
 - `darwin-rebuild switch --flake ~/.config/nix-darwin` alias, and maybe one that
   does flake-upgrade too
 - garbage collection

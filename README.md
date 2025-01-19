@@ -16,7 +16,10 @@ My personal laptop makes use of
    1. Yes, it's odd to install another package manager before even using nix! I
       use Homebrew to install some GUI apps that either self-update or are not
       available in nixpkgs.
+1. `nix-shell -p git git-crypt`
 1. `git clone git@github.com:craigfurman/nix-workstations.git ~/.config/nix-darwin`
+1. `cd ~/.config/nix-darwin`
+1. `git-crypt unlock <key>`
 1. `nix run nix-darwin -- switch --flake ~/.config/nix-darwin`
 1. After the first run, `darwin-rebuild` should become available.
 1. `chsh -s /run/current-system/sw/bin/zsh`
