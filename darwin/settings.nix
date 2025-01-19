@@ -1,10 +1,6 @@
 { pkgs, ... }:
 {
-  # TODO: remove homebrew when ready
-  environment.shells = [
-    pkgs.zsh
-    "/opt/homebrew/bin/zsh"
-  ];
+  environment.shells = [ pkgs.zsh ];
 
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -32,6 +28,10 @@
         [
           "/System/Applications/Launchpad.app"
           "/Applications/Brave Browser.app"
+          "/Applications/Todoist.app"
+          "/Applications/Discord.app"
+          "/Applications/Signal.app"
+          "/Applications/WhatsApp.app"
         ]
         ++ map (hmApp: "/Users/craig/Applications/Home Manager Apps/${hmApp}.app") hmApps;
     };
