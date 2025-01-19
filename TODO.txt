@@ -10,11 +10,7 @@
 - fonts
 - upstream autokbisw stuff?
 - port kitty config to nix rather than text?
-
-flycut
-- add to login items
-- accessibility: allow it to control computer
-
+ Finder settings
 - why is telescope slow now?
 
 Currently unsupported settings

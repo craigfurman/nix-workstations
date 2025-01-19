@@ -36,11 +36,13 @@
     gnutar
 
     age
+    ansible
     curl
     fd
     htop
     nixfmt-rfc-style
     restic
+    tree
     unixtools.watch
     wget
   ];

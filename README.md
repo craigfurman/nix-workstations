@@ -11,6 +11,10 @@ My personal laptop makes use of
 ### New machine setup
 
 1. Install nix: <https://nixos.org/download/#nix-install-macos>
+1. Install Homebrew
+   1. Yes, it's odd to install another package manager before even using nix! I
+      use Homebrew to install some GUI apps that either self-update or are not
+      available in nixpkgs.
 1. `git clone git@github.com:craigfurman/nix-workstations.git ~/.config/nix-darwin`
 1. `nix run nix-darwin -- switch --flake ~/.config/nix-darwin`
 1. After the first run, `darwin-rebuild` should become available.

@@ -18,6 +18,7 @@
   nixpkgs.overlays = [ overlay ];
 
   imports = [
+    ./apps.nix
     ./autokbisw.nix
     ./settings.nix
   ];
