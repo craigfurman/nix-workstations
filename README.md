@@ -1,7 +1,8 @@
 # nix-workstations
 
-Nix config for my computer(s). This is early WIP as I port over functionality
-from <https://github.com/craigfurman/ansible-home>.
+Nix config for my computer(s). Most of the functionality from
+<https://github.com/craigfurman/ansible-home> is ported over, but there will
+probably be a long tail of unported stuff for some time.
 
 ## Macs
 
