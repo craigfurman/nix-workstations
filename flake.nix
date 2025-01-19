@@ -22,6 +22,7 @@
 
       overlay = final: prev: {
         autokbisw = self.packages.${system}.autokbisw;
+        bluesnooze = self.packages.${system}.bluesnooze;
         nvim-cmp_kitty = self.packages.${system}.nvim-cmp_kitty;
       };
 
@@ -30,6 +31,7 @@
     {
       packages.${system} = {
         autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
+        bluesnooze = pkgs.callPackage ./pkgs/bluesnooze.nix { };
         nvim-cmp_kitty = pkgs.callPackage ./pkgs/cmp_kitty.nix { };
       };
 

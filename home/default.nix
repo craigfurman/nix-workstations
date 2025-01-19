@@ -15,6 +15,7 @@
 
   imports = [
     ./app-trampolines
+    ./apps.nix
     ./git.nix
     ./kitty.nix
     ./lang
@@ -41,6 +42,7 @@
     nixfmt-rfc-style
     restic
     unixtools.watch
+    wget
   ];
 
   programs.direnv = {
