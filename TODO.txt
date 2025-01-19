@@ -8,7 +8,6 @@
 - fonts
 - upstream autokbisw stuff?
 - port kitty config to nix rather than text?
- Finder settings
 - why is telescope slow now?
 
 Currently unsupported settings

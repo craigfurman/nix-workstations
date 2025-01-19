@@ -36,6 +36,8 @@
         ++ map (hmApp: "/Users/craig/Applications/Home Manager Apps/${hmApp}.app") hmApps;
     };
 
+    finder.FXPreferredViewStyle = "Nlsv"; # list view
+
     screensaver = {
       askForPassword = true;
       askForPasswordDelay = 0;
