@@ -1,5 +1,4 @@
 {
-
   homebrew = {
     enable = true;
 
@@ -25,6 +24,11 @@
 
         # fonts
         (cask "font-inconsolata-nerd-font")
+
+        # This must run from /Applications. This is the easiest route, even
+        # though it won't update. I'll have to manually brew-upgrade it from
+        # time to time, which is a bit sad.
+        (cask "secretive")
       ];
 
     masApps = {
@@ -34,7 +38,6 @@
       Todoist = 585829637;
     };
 
-    # TODO enable when ready
-    # onActivation.cleanup = "zap";
+    onActivation.cleanup = "zap";
   };
 }
