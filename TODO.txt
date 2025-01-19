@@ -1,4 +1,3 @@
-- why is telescope slow now?
 - openssh config, keys with Secretive
 - port git config
 - port graphical apps over (homebrew vs wrapper scripts? MAS?). Remember to
@@ -15,6 +14,8 @@
 flycut
 - add to login items
 - accessibility: allow it to control computer
+
+- why is telescope slow now?
 
 Currently unsupported settings
 - Turn keyboard backlight off after 5s

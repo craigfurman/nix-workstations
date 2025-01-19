@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -16,6 +14,7 @@
   home.stateVersion = "24.11";
 
   imports = [
+    ./app-trampolines
     ./git.nix
     ./kitty.nix
     ./lang
