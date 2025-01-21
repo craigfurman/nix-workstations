@@ -41,7 +41,6 @@
     fd
     htop
     nixfmt-rfc-style
-    restic
     tree
     unixtools.watch
     wget
