@@ -26,6 +26,12 @@ My personal laptop makes use of
    1. It might be possible to automate this by setting
       https://daiderd.com/nix-darwin/manual/index.html#opt-users.knownUsers, but
       I'm a bit paranoid about accidentally deleting my user account.
+1. Remove unused channels (home-manager ensures that a channel pinned to the
+   flake's nixpkgs is made available for nix-shell and friends)
+   1. `nix-channel --remove nixpkgs`
+   1. `sudo nix-channel --remove nixpkgs`
+   1. `nix-channel --list` and `sudo nix-channel --list` should both return
+      empty.
 
 #### Other config
 

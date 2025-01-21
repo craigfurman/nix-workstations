@@ -1,4 +1,5 @@
 {
+  nixpkgs,
   pkgs,
   ...
 }:
@@ -45,6 +46,9 @@
     unixtools.watch
     wget
   ];
+
+  # nix-shell and friends use the same nixpkgs revision as this flake
+  nix.channels = { inherit nixpkgs; };
 
   programs.direnv = {
     enable = true;
