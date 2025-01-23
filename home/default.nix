@@ -47,8 +47,16 @@
     wget
   ];
 
-  # nix-shell and friends use the same nixpkgs revision as this flake
-  nix.channels = { inherit nixpkgs; };
+  nix = {
+    # nix-shell and friends use the same nixpkgs revision as this flake
+    channels = { inherit nixpkgs; };
+
+    # Darwin defines its own GC.
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 14d";
+    };
+  };
 
   programs.direnv = {
     enable = true;

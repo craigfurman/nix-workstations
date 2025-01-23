@@ -1,13 +1,11 @@
 - openssh config, keys with Secretive
 - `darwin-rebuild switch --flake ~/.config/nix-darwin` alias, and maybe one that
   does flake-upgrade too
-- garbage collection
 - migrate from ansible: services (just restic?)
 - nix self-upgrade
 - fonts
 - upstream autokbisw stuff?
 - port kitty config to nix rather than text?
-- why is telescope slow now?
 
 Currently unsupported settings
 - Turn keyboard backlight off after 5s

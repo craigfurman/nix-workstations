@@ -24,6 +24,7 @@
   ];
 
   # Clean up old darwin generations. I believe this will run as root.
+  # HM defines its own GC.
   nix.gc = {
     automatic = true;
     options = "--delete-older-than 14d";
