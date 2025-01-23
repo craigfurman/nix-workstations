@@ -56,8 +56,9 @@ in
       vim-commentary
       vim-fugitive
       vim-rhubarb
-      vim-surround
       vim-signify
+      vim-surround
+      which-key-nvim
     ];
   };
 
