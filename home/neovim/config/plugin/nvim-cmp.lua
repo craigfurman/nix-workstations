@@ -24,7 +24,6 @@ cmp.setup({
     { name = 'luasnip' },
   }, {
     { name = 'buffer' },
-    { name = 'kitty' }, -- ideally this would live in neovim-kitty-integration.nix, but that's too hard
   })
 })
 
