@@ -22,7 +22,7 @@
     ./lang
     ./neovim
     ./neovim-kitty-integration.nix
-    ./shell.nix
+    ./shell
   ];
 
   home.packages = with pkgs; [

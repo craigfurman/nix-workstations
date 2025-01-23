@@ -7,6 +7,8 @@ let
   };
 in
 {
+  imports = [ ./hack.nix ];
+
   home.packages = [ pkgs.coreutils-prefixed ];
 
   home.sessionVariables = {
