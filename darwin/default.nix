@@ -22,4 +22,10 @@
     ./autokbisw.nix
     ./settings.nix
   ];
+
+  # Clean up old darwin generations. I believe this will run as root.
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 14d";
+  };
 }
