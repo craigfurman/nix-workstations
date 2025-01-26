@@ -1,0 +1,13 @@
+.Trash/**
+.ansible/**
+.asdf/**
+.cache/**
+.cargo/**
+.keras/**
+.npm/**
+.oh-my-zsh/**
+.rustup/**
+Library/**
+Movies/**
+workspace/go/bin/*
+workspace/go/pkg/**

@@ -14,4 +14,12 @@
       fileOpenCommand = formatAutocmd "BufEnter";
       preSaveCommand = formatAutocmd "BufWritePre";
     };
+
+  mkEnvrc =
+    vars:
+    let
+      keysToEnvVarStrings = builtins.mapAttrs (key: value: "export ${key}=\"${value}\"") vars;
+      envVarStrings = lib.attrsets.attrValues (keysToEnvVarStrings);
+    in
+    (lib.strings.concatStringsSep "\n" envVarStrings) + "\n";
 }

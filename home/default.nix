@@ -17,6 +17,7 @@
   imports = [
     ./app-trampolines
     ./apps.nix
+    ./backup
     ./git.nix
     ./kitty.nix
     ./lang

@@ -62,6 +62,8 @@
         };
       };
 
+      lib = craigLib;
+
       formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
