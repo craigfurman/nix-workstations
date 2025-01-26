@@ -26,6 +26,16 @@
     ./shell
   ];
 
+  home.file.".ssh/config".text = ''
+    Include config.d/*
+
+    Host *
+      IdentityAgent ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+      UseKeychain yes
+      AddKeysToAgent yes
+      StrictHostKeyChecking accept-new
+  '';
+
   home.packages = with pkgs; [
     # GNUtils
     coreutils
