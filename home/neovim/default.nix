@@ -35,9 +35,9 @@ in
 
       # Appearance
       {
-        plugin = base16-vim;
+        plugin = tinted-vim;
         config = ''
-          let base16_colorspace=256
+          let tinted_colorspace=256
           colorscheme base16-$BASE16_THEME
         '';
       }
@@ -60,7 +60,7 @@ in
       cmp_luasnip
       {
         plugin = nvim-autopairs;
-	type = "lua";
+        type = "lua";
         config = ''
           require("nvim-autopairs").setup {}
         '';

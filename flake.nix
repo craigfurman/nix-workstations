@@ -23,6 +23,9 @@
       overlay = final: prev: {
         autokbisw = self.packages.${system}.autokbisw;
         bluesnooze = self.packages.${system}.bluesnooze;
+        vimPlugins = pkgs.vimPlugins // {
+          tinted-vim = self.packages.${system}.tinted-vim;
+        };
       };
 
       craigLib = pkgs.callPackage (import ./lib) { };
@@ -31,6 +34,7 @@
       packages.${system} = {
         autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
         bluesnooze = pkgs.callPackage ./pkgs/bluesnooze.nix { };
+        tinted-vim = pkgs.callPackage ./pkgs/tinted-vim.nix { };
       };
 
       # Build darwin flake using:
