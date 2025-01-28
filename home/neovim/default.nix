@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   pluginLua = plugin: {
     plugin = pkgs.vimPlugins.${plugin};
@@ -21,7 +26,7 @@ in
   programs.neovim = {
     enable = true;
 
-    extraLuaConfig = pkgs.lib.mkBefore (builtins.readFile ./config/prelude.lua);
+    extraLuaConfig = lib.mkBefore (builtins.readFile ./config/prelude.lua);
 
     plugins = with pkgs.vimPlugins; [
       # Language servers
@@ -43,6 +48,8 @@ in
       (pluginLua "nvim-tree-lua")
       nvim-web-devicons
 
+      (pluginLua "vim-test")
+
       # Autocomplete
       (pluginLua "nvim-cmp")
       cmp-nvim-lsp
@@ -51,6 +58,13 @@ in
       cmp-cmdline
       luasnip
       cmp_luasnip
+      {
+        plugin = nvim-autopairs;
+	type = "lua";
+        config = ''
+          require("nvim-autopairs").setup {}
+        '';
+      }
 
       # Core
       vim-commentary
