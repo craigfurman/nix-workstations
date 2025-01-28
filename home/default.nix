@@ -15,8 +15,7 @@
   home.stateVersion = "24.11";
 
   imports = [
-    ./app-trampolines
-    ./apps.nix
+    ./apps
     ./backup
     ./git.nix
     ./kitty.nix
