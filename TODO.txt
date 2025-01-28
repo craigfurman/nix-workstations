@@ -1,9 +1,6 @@
-- `darwin-rebuild switch --flake ~/.config/nix-darwin` alias, and maybe one that
-  does flake-upgrade too
-- migrate from ansible: services (just restic?)
-- when bluesnooze package changes, it stops launching at login
+- when bluesnooze package path changes, it stops launching at login
 - upstream autokbisw stuff?
-- port kitty config to nix rather than text?
+- switch to nixvim?
 
 Currently unsupported settings
 - Turn keyboard backlight off after 5s
