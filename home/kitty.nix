@@ -25,6 +25,8 @@
       confirm_os_window_close = 0;
       macos_option_as_alt = "left";
       macos_quit_when_last_window_closed = true;
+      scrollback_lines = 20000;
+      scrollback_pager_history_size = 10; # MB
     };
   };
 }
