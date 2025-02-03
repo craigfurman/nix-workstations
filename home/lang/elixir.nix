@@ -5,6 +5,10 @@
     elixir-ls
   ];
 
+  home.sessionVariables = {
+    ERL_AFLAGS = "-kernel shell_history enabled -kernel shell_history_file_bytes 1048576"; # 1MB
+  };
+
   programs.neovim = {
     craigExtensions.treesitterParsers = [ "elixir" ];
 
