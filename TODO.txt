@@ -9,3 +9,4 @@ Currently unsupported settings
 - Night shift
 - Battery options
 - Spotlight exclusions (search privacy) - currently ~/workspace
+- Turn off Apple Intelligence

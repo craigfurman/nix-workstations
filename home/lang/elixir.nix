@@ -10,13 +10,17 @@
   };
 
   programs.neovim = {
-    craigExtensions.treesitterParsers = [ "elixir" ];
+    craigExtensions.treesitterParsers = [
+      "elixir"
+      "heex"
+    ];
 
     extraConfig =
       let
         extensions = [
           "ex"
           "exs"
+          "heex"
         ];
       in
       ''
