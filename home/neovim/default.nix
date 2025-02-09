@@ -65,6 +65,17 @@ in
           require("nvim-autopairs").setup {}
         '';
       }
+      {
+        plugin = nvim-treesitter-endwise;
+        type = "lua";
+        config = ''
+          require('nvim-treesitter.configs').setup {
+              endwise = {
+                  enable = true,
+              },
+          }
+        '';
+      }
 
       # Core
       vim-commentary
