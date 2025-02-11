@@ -67,7 +67,18 @@
     };
   };
 
-  programs.zsh.shellAliases = {
-    g = "git";
+  programs.zsh = {
+    initExtra = ''
+      gclone() {
+        local loc="$(echo "$1" | sed 's/^git@//g' | sed 's/^https:\/\///g' | sed 's/\.git$//g' | sed 's/:/\//g')"
+        cd ~/workspace
+        git clone --recursive "$1" "$loc"
+        cd "$loc"
+      }
+    '';
+
+    shellAliases = {
+      g = "git";
+    };
   };
 }
