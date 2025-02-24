@@ -56,7 +56,15 @@ in
       cmp-buffer
       cmp-path
       cmp-cmdline
-      luasnip
+      {
+        plugin = luasnip;
+        type = "lua";
+        config = ''
+          require("luasnip.loaders.from_snipmate").lazy_load({
+            ['paths'] = {'${./snippets}'}
+          })
+        '';
+      }
       cmp_luasnip
       {
         plugin = nvim-autopairs;
