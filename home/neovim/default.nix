@@ -39,6 +39,8 @@ in
         config = ''
           let tinted_colorspace=256
           colorscheme base16-$BASE16_THEME
+          highlight Comment cterm=NONE gui=NONE
+          highlight String cterm=NONE gui=NONE
         '';
       }
       (pluginLua "lualine-nvim")
