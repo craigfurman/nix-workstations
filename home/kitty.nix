@@ -1,9 +1,11 @@
+{ pkgs, ... }:
 {
   programs.kitty = {
     enable = true;
 
     font = {
-      name = "Inconsolata Nerd Font Mono";
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrainsMono Nerd Font Mono";
       size = 14;
     };
 

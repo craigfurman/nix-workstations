@@ -22,9 +22,6 @@
         (cask "whatsapp")
         (cask "zoom")
 
-        # fonts
-        (cask "font-inconsolata-nerd-font")
-
         # This must run from /Applications. This is the easiest route, even
         # though it won't update. I'll have to manually brew-upgrade it from
         # time to time, which is a bit sad.

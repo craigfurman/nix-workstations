@@ -1,4 +1,4 @@
-- ligatures for arrows in which-key not working
+- no italics for comments or strings (tinted-vim colorscheme does this)
 - base16 / vim colors ugly in kitty?
   - https://github.com/tinted-theming/tinted-vim/issues/90?
 - when bluesnooze package path changes, it stops launching at login
