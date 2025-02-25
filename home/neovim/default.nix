@@ -41,6 +41,10 @@ in
           colorscheme base16-$BASE16_THEME
           highlight Comment cterm=NONE gui=NONE
           highlight String cterm=NONE gui=NONE
+
+          " affects git commits
+          highlight Added cterm=NONE gui=NONE
+          highlight Removed cterm=NONE gui=NONE
         '';
       }
       (pluginLua "lualine-nvim")
