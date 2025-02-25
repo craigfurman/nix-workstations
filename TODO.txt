@@ -1,3 +1,4 @@
+- ligatures for arrows in which-key not working
 - base16 / vim colors ugly in kitty?
   - https://github.com/tinted-theming/tinted-vim/issues/90?
 - when bluesnooze package path changes, it stops launching at login
