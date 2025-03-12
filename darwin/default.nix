@@ -23,10 +23,18 @@
     ./settings.nix
   ];
 
-  # Clean up old darwin generations. I believe this will run as root.
-  # HM defines its own GC.
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 14d";
+  nix = {
+    # Clean up old darwin generations. I believe this will run as root. HM
+    # defines its own GC.
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 14d";
+    };
+
+    # For building linux packages in a qemu VM. I don't want to leave this on
+    # all the time, so it is disabled usually.
+    linux-builder = {
+      enable = false;
+    };
   };
 }
