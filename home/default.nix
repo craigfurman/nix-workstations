@@ -51,6 +51,7 @@
     curl
     fd
     htop
+    lima
     nixfmt-rfc-style
     tree
     unixtools.watch
