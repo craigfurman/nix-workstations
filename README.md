@@ -32,6 +32,14 @@ My personal laptop makes use of
    1. `sudo nix-channel --remove nixpkgs`
    1. `nix-channel --list` and `sudo nix-channel --list` should both return
       empty.
+1. Uninstall the original nix version, how that nix-darwin manages it
+   1. Accomplish this by uninstalling all packages from user and root's default
+      profiles. All packages should be managed by nix-darwin / HM / other
+      flakes.
+   1. `nix profile list`
+   1. For each package, `nix-env --uninstall <package>`
+   1. Repeat steps with `sudo`
+1. `nix doctor`
 
 #### Other config
 
