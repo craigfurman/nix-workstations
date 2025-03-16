@@ -4,9 +4,7 @@
     enable = true;
 
     # https://github.com/NixOS/nixpkgs/issues/388773
-    # But I don't use fish anyway, so just disable it rather than disabling
-    # tests.
-    shellIntegration.enableFishIntegration = false;
+    package = pkgs.kitty.overridePythonAttrs { doCheck = false; };
 
     font = {
       package = pkgs.nerd-fonts.jetbrains-mono;
