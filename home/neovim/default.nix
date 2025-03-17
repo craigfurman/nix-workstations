@@ -15,6 +15,7 @@ let
 in
 {
   imports = [
+    ./completion.nix
     ./config.nix
     ./hack.nix
     ./treesitter.nix
@@ -55,41 +56,6 @@ in
       nvim-web-devicons
 
       (pluginLua "vim-test")
-
-      # Autocomplete
-      (pluginLua "nvim-cmp")
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp-cmdline
-      {
-        plugin = luasnip;
-        type = "lua";
-        config = ''
-          require("luasnip.loaders.from_snipmate").lazy_load({
-            ['paths'] = {'${./snippets}'}
-          })
-        '';
-      }
-      cmp_luasnip
-      {
-        plugin = nvim-autopairs;
-        type = "lua";
-        config = ''
-          require("nvim-autopairs").setup {}
-        '';
-      }
-      {
-        plugin = nvim-treesitter-endwise;
-        type = "lua";
-        config = ''
-          require('nvim-treesitter.configs').setup {
-              endwise = {
-                  enable = true,
-              },
-          }
-        '';
-      }
 
       # Core
       vim-commentary
