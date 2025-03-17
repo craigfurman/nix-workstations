@@ -3,9 +3,6 @@
   programs.kitty = {
     enable = true;
 
-    # https://github.com/NixOS/nixpkgs/issues/388773
-    package = pkgs.kitty.overridePythonAttrs { doCheck = false; };
-
     font = {
       package = pkgs.nerd-fonts.jetbrains-mono;
       name = "JetBrainsMono Nerd Font Mono";
