@@ -41,8 +41,16 @@
     };
 
     extraConfig = {
+      branch.sort = "-committerdate";
       diff = {
+        algorithm = "histogram";
         colorMoved = true;
+        mnemonicPrefix = true;
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
       };
       init = {
         defaultBranch = "main";
@@ -54,12 +62,11 @@
       merge = {
         conflictstyle = "zdiff3";
       };
-      pull = {
-        ff = "only";
-      };
+      pull.rebase = true;
       push = {
         autoSetupRemote = true;
       };
+      tag.sort = "version:refname";
       user = {
         name = "Craig Furman";
         email = secrets.git.email;
