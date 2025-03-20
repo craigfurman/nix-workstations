@@ -19,16 +19,24 @@
       "ctrl+shift+f7" = "layout_action rotate";
     };
 
-    settings = {
-      cursor_blink_interval = 0;
-      copy_on_select = true;
-      enabled_layouts = "splits,stack";
-      hide_window_decorations = true;
-      confirm_os_window_close = 0;
-      macos_option_as_alt = "left";
-      macos_quit_when_last_window_closed = true;
-      scrollback_lines = 20000;
-      scrollback_pager_history_size = 10; # MB
-    };
+    settings =
+      {
+        cursor_blink_interval = 0;
+        copy_on_select = true;
+        enabled_layouts = "splits,stack";
+        hide_window_decorations = true;
+        confirm_os_window_close = 0;
+        scrollback_lines = 20000;
+        scrollback_pager_history_size = 10; # MB
+      }
+      // (
+        if pkgs.stdenv.isDarwin then
+          {
+            macos_option_as_alt = "left";
+            macos_quit_when_last_window_closed = true;
+          }
+        else
+          { }
+      );
   };
 }
