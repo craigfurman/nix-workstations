@@ -1,9 +1,11 @@
+extra:
 {
+  lib,
   nixpkgs,
   pkgs,
   ...
 }:
-{
+lib.recursiveUpdate {
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -25,6 +27,7 @@
     ./shell
   ];
 
+  # TODO split out the mac-specific secretive and keychain bits
   home.file.".ssh/config".text = ''
     Include config.d/*
 
@@ -88,4 +91,4 @@
       "  !.git"
     ];
   };
-}
+} extra
