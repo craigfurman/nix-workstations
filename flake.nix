@@ -70,6 +70,8 @@
 
       lib = craigLib;
 
+      homeConfiguration = import ./home;
+
       formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
