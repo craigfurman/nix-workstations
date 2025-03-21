@@ -34,6 +34,10 @@
       packages.${system} = {
         autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
         bluesnooze = pkgs.callPackage ./pkgs/bluesnooze.nix { };
+      };
+
+      # TODO DRY into forAllSystems
+      packages.aarch64-linux = {
         tinted-vim = pkgs.callPackage ./pkgs/tinted-vim.nix { };
       };
 
