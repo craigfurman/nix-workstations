@@ -97,9 +97,10 @@
     packages = with pkgs; [
       #  thunderbird
     ];
+
+    ignoreShellProgramCheck = true;
     shell = pkgs.zsh;
   };
-  programs.zsh.enable = true;
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
