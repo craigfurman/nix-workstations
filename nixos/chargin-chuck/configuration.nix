@@ -4,12 +4,12 @@
 
 {
   pkgs,
-  overlay,
   ...
 }:
 
 {
   imports = [
+    ../base
     ./games.nix
     ./hardware-configuration.nix
   ];
@@ -25,15 +25,12 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/London";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
     LC_IDENTIFICATION = "en_GB.UTF-8";
@@ -46,7 +43,6 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
@@ -60,13 +56,11 @@
     variant = "";
   };
 
-  # Configure console keymap
   console.keyMap = "uk";
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
+  # Sound
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -108,21 +102,6 @@
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
-
-  nix = {
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 14d";
-    };
-
-    settings = {
-      experimental-features = "nix-command flakes";
-    };
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.overlays = [ overlay ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
