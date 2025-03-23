@@ -28,7 +28,6 @@ lib.recursiveUpdate {
     ./ssh.nix
   ];
 
-
   home.packages = with pkgs; [
     # GNUtils
     coreutils

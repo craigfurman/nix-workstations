@@ -37,6 +37,10 @@
         tinted-vim = pkgs.callPackage ./pkgs/tinted-vim.nix { };
       };
 
+      packages.x86_64-linux = {
+        tinted-vim = nixpkgs.legacyPackages.x86_64-linux.callPackage ./pkgs/tinted-vim.nix { };
+      };
+
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem {
@@ -68,8 +72,42 @@
         };
       };
 
+      nixosConfigurations.chargin-chuck = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./nixos/chargin-chuck/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.craig = import ./home { };
+
+              extraSpecialArgs = {
+                inherit craigLib nixpkgs;
+                secrets = import ./secrets/chargin-chuck.nix;
+              };
+            };
+          }
+        ];
+
+        specialArgs =
+          let
+            system = "x86_64-linux";
+          in
+          {
+            inherit system;
+            overlay = final: prev: {
+              vimPlugins = nixpkgs.legacyPackages.${system}.vimPlugins // {
+                tinted-vim = self.packages.${system}.tinted-vim;
+              };
+            };
+            flake = self;
+          };
+      };
+
       lib = craigLib;
 
       formatter.${system} = pkgs.nixfmt-rfc-style;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
     };
 }

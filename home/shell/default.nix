@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   tintedShellRepo = builtins.fetchGit {
     url = "https://github.com/tinted-theming/tinted-shell.git";
@@ -9,7 +9,7 @@ in
 {
   imports = [ ./hack.nix ];
 
-  home.packages = [ pkgs.coreutils-prefixed ];
+  home.packages = lib.mkIf pkgs.stdenv.isDarwin [ pkgs.coreutils-prefixed ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
