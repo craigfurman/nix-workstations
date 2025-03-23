@@ -1,10 +1,12 @@
-- base16 / vim colors ugly in kitty?
-  - https://github.com/tinted-theming/tinted-vim/issues/90?
 - when bluesnooze package path changes, it stops launching at login
-- upstream autokbisw stuff?
-- switch to nixvim?
 
-Currently unsupported settings
+nixos
+- gnome remap caps lock to escape
+   - currently snowflaked with `gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"`
+- gnome fractional scaling
+- "steam machine"? look into gameScope and gameScopeSession
+
+Currently unsupported settings (darwin)
 - Turn keyboard backlight off after 5s
 - Night shift
 - Battery options
