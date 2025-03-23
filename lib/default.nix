@@ -1,5 +1,8 @@
-{ lib, ... }:
-{
+lib: {
+  forEachSystem =
+    systems: systemFn:
+    builtins.foldl' (merged: system: merged // { ${system} = (systemFn system); }) { } systems;
+
   neovim =
     let
       formatAutocmd =
@@ -18,7 +21,7 @@
   mkEnvrc =
     vars:
     let
-      keysToEnvVarStrings = builtins.mapAttrs (key: value: "export ${key}=\"${value}\"") vars;
+      keysToEnvVarStrings = builtins.mapAttrs (key: value: ''export ${key}="${value}"'') vars;
       envVarStrings = lib.attrsets.attrValues (keysToEnvVarStrings);
     in
     (lib.strings.concatStringsSep "\n" envVarStrings) + "\n";

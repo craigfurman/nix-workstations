@@ -1,3 +1,4 @@
+- fzf shell integration broken
 - when bluesnooze package path changes, it stops launching at login
 
 nixos
