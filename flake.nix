@@ -84,6 +84,7 @@
 
               extraSpecialArgs = {
                 inherit craigLib nixpkgs;
+                flakePath = ".config/nixos";
                 secrets = import ./secrets/chargin-chuck.nix;
               };
             };

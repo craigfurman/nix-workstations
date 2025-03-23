@@ -1,5 +1,6 @@
 {
   config,
+  flakePath ? ".config/nix-darwin",
   lib,
   pkgs,
   ...
@@ -22,7 +23,7 @@ in
   ];
 
   home.file.".config/nvim/lua/hack.lua".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nix-darwin/home/neovim/config/hack.lua";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/${flakePath}/home/neovim/config/hack.lua";
 
   programs.neovim = {
     enable = true;
