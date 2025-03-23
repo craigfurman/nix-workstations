@@ -57,6 +57,7 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "gb";
+    options = "caps:escape";
     variant = "";
   };
 
