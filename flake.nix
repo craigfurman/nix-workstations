@@ -127,9 +127,15 @@
             ];
 
             specialArgs = {
-              inherit overlay system;
-              flake = self;
+              inherit overlay;
             };
+          };
+
+          # Placeholder - coming soon!
+          thwomp = nixpkgs.lib.nixosSystem {
+            modules = [
+              # ./nixos/thwomp/configuration.nix
+            ];
           };
         };
 
