@@ -60,6 +60,7 @@
               # through to home-manager, although the docs imply it should.
               extraSpecialArgs = {
                 inherit craigLib nixpkgs;
+                flakePath = ".config/nix-darwin";
                 secrets = import ./secrets/lakitu.nix;
               };
             };

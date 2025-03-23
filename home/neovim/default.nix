@@ -1,6 +1,6 @@
 {
   config,
-  flakePath ? ".config/nix-darwin",
+  flakePath,
   lib,
   pkgs,
   ...
