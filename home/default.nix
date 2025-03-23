@@ -69,6 +69,7 @@ lib.recursiveUpdate {
 
   programs.fzf = {
     enable = true;
+    enableZshIntegration = true;
     defaultCommand = "rg";
   };
 
