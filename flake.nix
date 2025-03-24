@@ -157,6 +157,10 @@
             modules = [
               ./nixos/thwomp/configuration.nix
             ];
+
+            specialArgs = {
+              secrets = import ./secrets/thwomp.nix;
+            };
           };
         };
 
