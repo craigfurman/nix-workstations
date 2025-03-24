@@ -12,6 +12,7 @@
 
 {
   imports = [
+    ../base
     ./hardware-configuration.nix
   ];
 
@@ -20,6 +21,38 @@
 
     configurationLimit = 5;
     device = "/dev/sdd";
+  };
+
+  environment.etc =
+    let
+      privateFile = text: {
+        inherit text;
+        mode = "0600";
+      };
+    in
+    {
+      crypttab = privateFile ''
+        data0 UUID=673a8895-136a-465b-95fc-b02fb8e77f94 /etc/luks_password luks,timeout=10
+        data1 UUID=27b76ab0-47d3-4375-b0f0-8e7ce532b17c /etc/luks_password luks,timeout=10
+      '';
+      luks_password = privateFile secrets.luksPassword;
+    };
+
+  environment.systemPackages = with pkgs; [
+    cryptsetup
+    vim
+  ];
+
+  fileSystems."/media/data" = {
+    device = "/dev/disk/by-uuid/9dd53dc7-638f-429a-a3ad-e4a74cae2f66";
+    fsType = "btrfs";
+    options = [
+      "rw"
+      "relatime"
+      "space_cache"
+      "subvol=/data"
+      "nofail"
+    ];
   };
 
   networking.hostName = "thwomp";

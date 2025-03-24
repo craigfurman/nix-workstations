@@ -159,6 +159,7 @@
             ];
 
             specialArgs = {
+              inherit overlay;
               secrets = import ./secrets/thwomp.nix;
             };
           };
