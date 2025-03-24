@@ -28,28 +28,33 @@ lib.recursiveUpdate {
     ./ssh.nix
   ];
 
-  home.packages = with pkgs; [
-    # GNUtils
-    coreutils
-    diffutils
-    findutils
-    gawk
-    gnugrep
-    gnumake
-    gnused
-    gnutar
+  home.packages =
+    with pkgs;
+    let
+      osPackages = if pkgs.stdenv.isDarwin then [ lima ] else [ ];
+    in
+    [
+      # GNUtils
+      coreutils
+      diffutils
+      findutils
+      gawk
+      gnugrep
+      gnumake
+      gnused
+      gnutar
 
-    age
-    ansible
-    curl
-    fd
-    htop
-    lima
-    nixfmt-rfc-style
-    tree
-    unixtools.watch
-    wget
-  ];
+      age
+      ansible
+      curl
+      fd
+      htop
+      nixfmt-rfc-style
+      tree
+      unixtools.watch
+      wget
+    ]
+    ++ osPackages;
 
   nix = {
     # nix-shell and friends use the same nixpkgs revision as this flake
