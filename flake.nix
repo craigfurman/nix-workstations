@@ -153,10 +153,9 @@
             };
           };
 
-          # Placeholder - coming soon!
           thwomp = nixpkgs.lib.nixosSystem {
             modules = [
-              # ./nixos/thwomp/configuration.nix
+              ./nixos/thwomp/configuration.nix
             ];
           };
         };
