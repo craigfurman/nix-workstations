@@ -2,22 +2,32 @@
   description = "Craig's configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # darwin
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    hm-darwin.url = "github:nix-community/home-manager";
+    hm-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    # linux
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hm-linux.url = "github:nix-community/home-manager";
+    hm-linux.inputs.nixpkgs.follows = "nixos-unstable";
   };
 
   outputs =
     {
-      home-manager,
+      nixpkgs-unstable,
       nix-darwin,
-      nixpkgs,
+      hm-darwin,
+
+      nixos-unstable,
+      hm-linux,
+
       self,
     }:
     let
-      lib = nixpkgs.lib;
+      lib = nixpkgs-unstable.lib;
       craigLib = (import ./lib) lib;
 
       macSystem = "aarch64-darwin";
@@ -28,10 +38,17 @@
         linuxSystem
       ];
 
+      systemNixpkgs =
+        system:
+        if nixpkgs-unstable.legacyPackages.${system}.stdenv.isLinux then
+          nixos-unstable
+        else
+          nixpkgs-unstable;
+
       crossPlatformPackages = forAllSystems (
         system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = (systemNixpkgs system).legacyPackages.${system};
         in
         {
           tinted-vim = pkgs.callPackage ./pkgs/tinted-vim.nix { };
@@ -41,7 +58,7 @@
       macPackages = craigLib.forEachSystem [ macSystem ] (
         system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = nixpkgs-unstable.legacyPackages.${system};
         in
         {
           autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
@@ -58,7 +75,9 @@
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem (
         let
           system = macSystem;
+          nixpkgs = nixpkgs-unstable;
           pkgs = nixpkgs.legacyPackages.${system};
+          home-manager = hm-darwin;
 
           overlay = final: prev: {
             autokbisw = self.packages.${system}.autokbisw;
@@ -100,6 +119,9 @@
       nixosConfigurations =
         let
           system = linuxSystem;
+          nixpkgs = nixos-unstable;
+          home-manager = hm-linux;
+
           overlay = final: prev: {
             vimPlugins = nixpkgs.legacyPackages.${system}.vimPlugins // {
               tinted-vim = self.packages.${system}.tinted-vim;
@@ -141,6 +163,8 @@
 
       lib = craigLib;
 
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = forAllSystems (
+        system: (systemNixpkgs system).legacyPackages.${system}.nixfmt-rfc-style
+      );
     };
 }
