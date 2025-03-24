@@ -10,6 +10,9 @@ nixos
      Maybe I'll try something other than gnome.
 - fzf shell integration broken (nixos only?)
 
+thwomp
+- sleep on a cron
+
 Currently unsupported settings (darwin)
 - Turn keyboard backlight off after 5s
 - Night shift
