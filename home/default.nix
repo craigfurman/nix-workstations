@@ -30,31 +30,30 @@ lib.recursiveUpdate {
 
   home.packages =
     with pkgs;
-    let
-      osPackages = if pkgs.stdenv.isDarwin then [ lima ] else [ ];
-    in
-    [
-      # GNUtils
-      coreutils
-      diffutils
-      findutils
-      gawk
-      gnugrep
-      gnumake
-      gnused
-      gnutar
+    lib.flatten (
+      [
+        # GNUtils
+        coreutils
+        diffutils
+        findutils
+        gawk
+        gnugrep
+        gnumake
+        gnused
+        gnutar
 
-      age
-      ansible
-      curl
-      fd
-      htop
-      nixfmt-rfc-style
-      tree
-      unixtools.watch
-      wget
-    ]
-    ++ osPackages;
+        age
+        ansible
+        curl
+        fd
+        htop
+        nixfmt-rfc-style
+        tree
+        unixtools.watch
+        wget
+      ]
+      ++ lib.optional pkgs.stdenv.isDarwin [ lima ]
+    );
 
   nix = {
     # nix-shell and friends use the same nixpkgs revision as this flake
