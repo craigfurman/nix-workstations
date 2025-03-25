@@ -40,6 +40,8 @@
 
   environment.systemPackages = with pkgs; [
     cryptsetup
+    htop
+    lsof
     vim
   ];
 
@@ -58,6 +60,12 @@
   networking.hostName = "thwomp";
 
   time.timeZone = "Europe/London";
+
+  # Avoid chgrp'ing massive directories, reuse old GID
+  users.groups.data = {
+    gid = 2000;
+    members = [ "craig" ];
+  };
 
   users.users.craig = {
     isNormalUser = true;
@@ -80,6 +88,8 @@
   services.plex = {
     enable = true;
     dataDir = "/media/data/plex";
+    group = "data";
+    openFirewall = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
