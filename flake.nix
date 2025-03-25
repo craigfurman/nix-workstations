@@ -96,7 +96,10 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.craig = import ./home { backup.enable = true; };
+                users.craig = import ./home {
+                  backup.enable = true;
+                  manageOtherMachines.enable = true;
+                };
 
                 # I don't know why, but darwin's specialArgs doesn't propagate
                 # through to home-manager, although the docs imply it should.
