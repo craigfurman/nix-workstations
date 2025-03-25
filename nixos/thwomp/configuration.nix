@@ -40,6 +40,8 @@
 
   environment.systemPackages = with pkgs; [
     cryptsetup
+    git
+    git-crypt
     htop
     lsof
     vim
