@@ -140,7 +140,9 @@
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  users.craig = import ./home { };
+                  users.craig = import ./home {
+                    dconf.enable = true;
+                  };
 
                   extraSpecialArgs = {
                     inherit craigLib nixpkgs;

@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  services.udev.packages = [ pkgs.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [
+    gnome-settings-daemon
+  ];
 
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;

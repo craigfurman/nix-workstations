@@ -1,13 +1,8 @@
 - when bluesnooze package path changes, it stops launching at login
 
 nixos
-- gnome remap caps lock to escape
-   - currently snowflaked with `gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"`
-- gnome fractional scaling
 - "steam machine"? look into gameScope and gameScopeSession
 - weird graphics issues when waking from sleep
-   - might be gnome-specific. All of my current issues here are about gnome.
-     Maybe I'll try something other than gnome.
 - fzf shell integration broken (nixos only?)
 
 thwomp

@@ -19,6 +19,7 @@ lib.recursiveUpdate {
   imports = [
     ./apps
     ./backup
+    ./dconf.nix
     ./git.nix
     ./kitty.nix
     ./lang
