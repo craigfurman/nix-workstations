@@ -13,6 +13,7 @@
 {
   imports = [
     ../base
+    ../nordvpn.nix
     ./hardware-configuration.nix
   ];
 
@@ -77,6 +78,11 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
+
+  services.custom.nordvpn = {
+    enable = true;
+    users = [ "craig" ];
+  };
 
   services.openssh = {
     enable = true;
