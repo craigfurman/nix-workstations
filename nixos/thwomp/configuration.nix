@@ -100,6 +100,28 @@
     openFirewall = true;
   };
 
+  services.transmission = {
+    enable = true;
+    group = "data";
+    openRPCPort = true;
+    package = pkgs.transmission_4;
+
+    # https://github.com/transmission/transmission/blob/main/docs/Editing-Configuration-Files.md
+    settings = {
+      blocklist-enabled = true;
+      blocklist-url = "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz";
+      download-dir = "/media/data/Downloads";
+      encryption = 1;
+      message-level = 1;
+      rpc-bind-address = "0.0.0.0";
+      rpc-enabled = true;
+      rpc-port = 9091;
+      rpc-whitelist = "127.0.0.1,192.168.*.*,thwomp";
+      rpc-whitelist-enabled = true;
+      utp-enabled = false;
+    };
+  };
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
