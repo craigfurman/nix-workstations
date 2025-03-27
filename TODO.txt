@@ -3,7 +3,6 @@
 nixos
 - "steam machine"? look into gameScope and gameScopeSession
 - weird graphics issues when waking from sleep
-- fzf shell integration broken (nixos only?)
 
 thwomp
 - sleep on a cron
