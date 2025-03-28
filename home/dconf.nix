@@ -15,6 +15,8 @@
       # This doesn't do anything, the type has to be an integer here even though
       # we've configured fractional scaling support below.
       # scaling-factor = 1.5;
+
+      text-scaling-factor = 1.5;
     };
     "org/gnome/mutter" = {
       experimental-features = [ "scale-monitor-framebuffer" ];
