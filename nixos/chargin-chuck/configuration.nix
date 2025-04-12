@@ -104,6 +104,13 @@
     brave
   ];
 
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
