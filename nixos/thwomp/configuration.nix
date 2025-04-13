@@ -117,6 +117,7 @@
       rpc-port = 9091;
       rpc-whitelist = "127.0.0.1,192.168.*.*,thwomp";
       rpc-whitelist-enabled = true;
+      umask = "002";
       utp-enabled = false;
     };
   };
