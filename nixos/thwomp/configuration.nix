@@ -56,7 +56,6 @@
       "relatime"
       "space_cache"
       "subvol=/data"
-      "nofail"
     ];
   };
 
