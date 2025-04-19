@@ -10,7 +10,8 @@
     hm-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # linux
-    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # TODO unpin when wifi issue resolved...
+    nixos-unstable.url = "github:NixOS/nixpkgs/f675531bc7e6657c10a18b565cfebd8aa9e24c14";
     hm-linux.url = "github:nix-community/home-manager";
     hm-linux.inputs.nixpkgs.follows = "nixos-unstable";
   };
