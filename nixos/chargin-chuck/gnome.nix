@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ gnomeExtensions, pkgs, ... }:
 {
   services.udev.packages = with pkgs; [
     gnome-settings-daemon
@@ -11,5 +11,7 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  environment.systemPackages = [ pkgs.gnomeExtensions.appindicator ];
+  environment.systemPackages = map (
+    gnomeExtension: pkgs.gnomeExtensions.${gnomeExtension}
+  ) gnomeExtensions;
 }

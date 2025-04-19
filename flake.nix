@@ -133,31 +133,38 @@
           };
         in
         {
-          chargin-chuck = nixpkgs.lib.nixosSystem {
-            modules = [
-              ./nixos/chargin-chuck/configuration.nix
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  users.craig = import ./home {
-                    dconf.enable = true;
-                  };
+          chargin-chuck =
+            let
+              gnomeExtensions = [
+                "appindicator"
+                "no-overview"
+              ];
+            in
+            nixpkgs.lib.nixosSystem {
+              modules = [
+                ./nixos/chargin-chuck/configuration.nix
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    users.craig = import ./home {
+                      dconf.enable = true;
+                    };
 
-                  extraSpecialArgs = {
-                    inherit craigLib nixpkgs;
-                    flakePath = ".config/nixos";
-                    secrets = import ./secrets/chargin-chuck.nix;
+                    extraSpecialArgs = {
+                      inherit craigLib gnomeExtensions nixpkgs;
+                      flakePath = ".config/nixos";
+                      secrets = import ./secrets/chargin-chuck.nix;
+                    };
                   };
-                };
-              }
-            ];
+                }
+              ];
 
-            specialArgs = {
-              inherit overlay;
+              specialArgs = {
+                inherit gnomeExtensions overlay;
+              };
             };
-          };
 
           thwomp = nixpkgs.lib.nixosSystem {
             modules = [
