@@ -1,9 +1,10 @@
 {
   config,
+  gnomeExtensions,
   lib,
   pkgs,
   ...
-}@args:
+}:
 {
   config = lib.mkIf config.dconf.enable {
     home.packages = [ pkgs.dconf-editor ];
@@ -24,9 +25,9 @@
       };
 
       "org/gnome/shell" = {
-        enabled-extensions = map (gnomeExtension: pkgs.gnomeExtensions.${gnomeExtension}.extensionUuid) (
-          if args ? gnomeExtensions then args.gnomeExtensions else [ ]
-        );
+        enabled-extensions = map (
+          gnomeExtension: pkgs.gnomeExtensions.${gnomeExtension}.extensionUuid
+        ) gnomeExtensions;
       };
     };
   };
