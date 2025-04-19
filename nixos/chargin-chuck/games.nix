@@ -1,5 +1,24 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
+  environment.systemPackages =
+    with pkgs;
+    let
+      retroarchWithCores = retroarch.withCores (
+        cores: with cores; [
+          bsnes
+          citra
+          dolphin
+          gambatte
+          mupen64plus
+        ]
+      );
+    in
+    [
+      azahar
+      dolphin-emu
+      retroarchWithCores
+    ];
+
   hardware = {
     graphics.enable = true;
 
@@ -32,6 +51,13 @@
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+  };
+
+  # Can boot into this, but I choose not to for now. I'm not actually 100% sure
+  # programs.steam.gamescopeSession is doing anything.
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
   };
 
   programs.steam = {
