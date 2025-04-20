@@ -17,6 +17,7 @@
       azahar
       dolphin-emu
       retroarchWithCores
+      steam-rom-manager
     ];
 
   hardware = {
