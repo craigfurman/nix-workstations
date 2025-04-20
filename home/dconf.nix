@@ -9,6 +9,7 @@
   config = lib.mkIf config.dconf.enable {
     home.packages = [ pkgs.dconf-editor ];
 
+    # These settings support a console-like PC (no login screen)
     dconf.settings = {
       "org/gnome/desktop/input-sources" = {
         xkb-options = [ "caps:escape" ];
@@ -19,6 +20,9 @@
         # scaling-factor = 1.5;
 
         text-scaling-factor = 1.5;
+      };
+      "org/gnome/desktop/screensaver" = {
+        lock-enabled = false;
       };
       "org/gnome/mutter" = {
         experimental-features = [ "scale-monitor-framebuffer" ];
