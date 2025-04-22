@@ -45,7 +45,6 @@ lib.recursiveUpdate {
         gnutar
 
         age
-        ansible
         curl
         fd
         htop

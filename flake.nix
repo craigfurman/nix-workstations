@@ -62,7 +62,6 @@
           pkgs = nixpkgs-unstable.legacyPackages.${system};
         in
         {
-          autokbisw = pkgs.swiftPackages.callPackage ./pkgs/autokbisw { };
           bluesnooze = pkgs.callPackage ./pkgs/bluesnooze.nix { };
         }
       );
@@ -71,19 +70,15 @@
 
       packages = lib.recursiveUpdate crossPlatformPackages macPackages;
 
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#$(hostname)
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem (
         let
           system = macSystem;
           nixpkgs = nixpkgs-unstable;
-          pkgs = nixpkgs.legacyPackages.${system};
           home-manager = hm-darwin;
 
           overlay = final: prev: {
-            autokbisw = self.packages.${system}.autokbisw;
             bluesnooze = self.packages.${system}.bluesnooze;
-            vimPlugins = pkgs.vimPlugins // {
+            vimPlugins = prev.vimPlugins // {
               tinted-vim = self.packages.${system}.tinted-vim;
             };
           };
