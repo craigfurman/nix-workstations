@@ -59,7 +59,7 @@
       macPackages = craigLib.forEachSystem [ macSystem ] (
         system:
         let
-          pkgs = nixpkgs-unstable.legacyPackages.${system};
+          pkgs = (systemNixpkgs system).legacyPackages.${system};
         in
         {
           bluesnooze = pkgs.callPackage ./pkgs/bluesnooze.nix { };
@@ -122,7 +122,7 @@
           home-manager = hm-linux;
 
           overlay = final: prev: {
-            vimPlugins = nixpkgs.legacyPackages.${system}.vimPlugins // {
+            vimPlugins = prev.vimPlugins // {
               tinted-vim = self.packages.${system}.tinted-vim;
             };
           };
