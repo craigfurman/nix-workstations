@@ -10,8 +10,7 @@
     hm-darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # linux
-    # TODO unpin when wifi issue resolved...
-    nixos-unstable.url = "github:NixOS/nixpkgs/f675531bc7e6657c10a18b565cfebd8aa9e24c14";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     hm-linux.url = "github:nix-community/home-manager";
     hm-linux.inputs.nixpkgs.follows = "nixos-unstable";
   };
@@ -122,6 +121,14 @@
           home-manager = hm-linux;
 
           overlay = final: prev: {
+            # TODO remove when linux-firmware bumped beyond 20250410
+            linux-firmware = prev.linux-firmware.overrideAttrs rec {
+              version = "20250311";
+              src = prev.fetchzip {
+                url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-${version}.tar.xz ";
+                hash = "sha256-ZM7j+kUpmWJUQdAGbsfwOqsNV8oE0U2t6qnw0b7pT4g=";
+              };
+            };
             vimPlugins = prev.vimPlugins // {
               tinted-vim = self.packages.${system}.tinted-vim;
             };
