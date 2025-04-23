@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   environment.shells = [ pkgs.zsh ];
 
@@ -33,7 +33,9 @@
           "/Applications/Signal.app"
           "/Applications/WhatsApp.app"
         ]
-        ++ map (hmApp: "/Users/craig/Applications/Home Manager Apps/${hmApp}.app") hmApps;
+        ++ map (
+          hmApp: "${config.users.users.craig.home}/Applications/Home Manager Apps/${hmApp}.app"
+        ) hmApps;
     };
 
     finder.FXPreferredViewStyle = "Nlsv"; # list view
