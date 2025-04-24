@@ -169,7 +169,7 @@
               ];
 
               specialArgs = {
-                inherit gnomeExtensions overlay;
+                inherit gnomeExtensions overlay secrets;
               };
             };
 

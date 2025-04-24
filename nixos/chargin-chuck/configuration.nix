@@ -4,6 +4,7 @@
 
 {
   pkgs,
+  secrets,
   ...
 }:
 
@@ -104,6 +105,11 @@
     bitwarden-desktop
     brave
   ];
+
+  services.custom.ssh-server = {
+    enable = true;
+    authorizedKeys = secrets.authorizedKeys;
+  };
 
   swapDevices = [
     {
