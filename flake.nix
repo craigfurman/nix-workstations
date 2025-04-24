@@ -102,7 +102,6 @@
                 # through to home-manager, although the docs imply it should.
                 extraSpecialArgs = {
                   inherit craigLib nixpkgs secrets;
-                  flakePath = ".config/nix-darwin";
                 };
               };
             }
@@ -162,7 +161,6 @@
                         nixpkgs
                         secrets
                         ;
-                      flakePath = ".config/nixos";
                     };
                   };
                 }
