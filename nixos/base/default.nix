@@ -1,5 +1,9 @@
-{ overlay, pkgs, ... }:
+{ overlay, ... }:
 {
+  imports = [
+    ../ssh-server.nix
+  ];
+
   nix = {
     gc = {
       automatic = true;

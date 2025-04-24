@@ -3,8 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 {
-  config,
-  lib,
   pkgs,
   secrets,
   ...
@@ -73,7 +71,6 @@
     isNormalUser = true;
     description = "Craig Furman";
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = secrets.authorizedKeys;
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -83,13 +80,9 @@
     users = [ "craig" ];
   };
 
-  services.openssh = {
+  services.custom.ssh-server = {
     enable = true;
-
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-    };
+    authorizedKeys = secrets.authorizedKeys;
   };
 
   services.plex = {
