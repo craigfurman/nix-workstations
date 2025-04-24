@@ -64,6 +64,8 @@
           bluesnooze = pkgs.callPackage ./pkgs/bluesnooze.nix { };
         }
       );
+
+      secrets = import ./secrets/user.nix;
     in
     {
 
@@ -99,9 +101,8 @@
                 # I don't know why, but darwin's specialArgs doesn't propagate
                 # through to home-manager, although the docs imply it should.
                 extraSpecialArgs = {
-                  inherit craigLib nixpkgs;
+                  inherit craigLib nixpkgs secrets;
                   flakePath = ".config/nix-darwin";
-                  secrets = import ./secrets/lakitu.nix;
                 };
               };
             }
@@ -155,9 +156,13 @@
                     };
 
                     extraSpecialArgs = {
-                      inherit craigLib gnomeExtensions nixpkgs;
+                      inherit
+                        craigLib
+                        gnomeExtensions
+                        nixpkgs
+                        secrets
+                        ;
                       flakePath = ".config/nixos";
-                      secrets = import ./secrets/chargin-chuck.nix;
                     };
                   };
                 }
@@ -175,7 +180,7 @@
 
             specialArgs = {
               inherit overlay;
-              secrets = import ./secrets/thwomp.nix;
+              secrets = secrets // (import ./secrets/thwomp.nix);
             };
           };
         };
