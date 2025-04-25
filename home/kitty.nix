@@ -17,6 +17,7 @@
       "ctrl+shift+f5" = "launch --cwd=current --location=hsplit";
       "ctrl+shift+f6" = "launch --cwd=current --location=vsplit";
       "ctrl+shift+f7" = "layout_action rotate";
+      "ctrl+shift+z" = "toggle_layout stack";
     };
 
     settings =
