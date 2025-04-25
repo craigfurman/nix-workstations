@@ -5,7 +5,10 @@
   ...
 }:
 {
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+    trusted-users = [ "craig" ];
+  };
 
   system.configurationRevision = flake.rev or flake.dirtyRev or null;
 
@@ -20,6 +23,7 @@
   imports = [
     ./apps.nix
     ./autokbisw.nix
+    ./manage-other-machines.nix
     ./settings.nix
   ];
 

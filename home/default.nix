@@ -23,7 +23,6 @@ lib.recursiveUpdate {
     ./git.nix
     ./kitty.nix
     ./lang
-    ./manage-other-machines.nix
     ./neovim
     ./neovim-kitty-integration.nix
     ./shell

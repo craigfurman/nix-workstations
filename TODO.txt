@@ -1,3 +1,5 @@
+Create symlinks in /etc for darwin/nixos.
+
 chargin-chuck
 - "steam machine"? look into gameScope and gameScopeSession
 - weird graphics issues when waking from sleep
