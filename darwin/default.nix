@@ -1,4 +1,5 @@
 {
+  config,
   flake,
   overlay,
   system,
@@ -26,6 +27,8 @@
     ./manage-other-machines.nix
     ./settings.nix
   ];
+
+  environment.etc.nix-darwin.source = "${config.users.users.craig.home}/.config/nix-darwin";
 
   nix = {
     # Clean up old darwin generations. I believe this will run as root. HM

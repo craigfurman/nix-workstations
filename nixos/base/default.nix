@@ -1,8 +1,10 @@
-{ overlay, ... }:
+{ config, overlay, ... }:
 {
   imports = [
     ../ssh-server.nix
   ];
+
+  environment.etc.nixos.source = "${config.users.users.craig.home}/.config/nixos";
 
   nix = {
     gc = {
