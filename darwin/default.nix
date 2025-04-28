@@ -23,7 +23,6 @@
 
   imports = [
     ./apps.nix
-    ./autokbisw.nix
     ./manage-other-machines.nix
     ./settings.nix
   ];
