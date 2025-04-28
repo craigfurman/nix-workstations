@@ -6,11 +6,6 @@
   ...
 }:
 {
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    trusted-users = [ "craig" ];
-  };
-
   system.configurationRevision = flake.rev or flake.dirtyRev or null;
 
   # Used for backwards compatibility, please read the changelog before changing.
@@ -41,6 +36,11 @@
     # all the time, so it is disabled usually.
     linux-builder = {
       enable = false;
+    };
+
+    settings = {
+      experimental-features = "nix-command flakes";
+      trusted-users = [ "craig" ];
     };
   };
 }
