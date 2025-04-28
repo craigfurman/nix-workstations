@@ -23,7 +23,7 @@ in
     # Keep effectively unlimited history
     history.save = 1000000000;
 
-    initExtra = ''
+    initContent = ''
       source ${tintedShellRepo}/profile_helper.sh
       base16_gruvbox-dark-medium
     '';

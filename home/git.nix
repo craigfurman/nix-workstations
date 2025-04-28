@@ -75,7 +75,7 @@
   };
 
   programs.zsh = {
-    initExtra = ''
+    initContent = ''
       gclone() {
         local loc="$(echo "$1" | sed 's/^git@//g' | sed 's/^https:\/\///g' | sed 's/\.git$//g' | sed 's/:/\//g')"
         cd ~/workspace

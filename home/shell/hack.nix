@@ -11,5 +11,5 @@
     in
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/${flakeName}/home/shell/hack.zsh";
 
-  programs.zsh.initExtra = lib.mkAfter "source ~/.zshrc_hack";
+  programs.zsh.initContent = lib.mkAfter "source ~/.zshrc_hack";
 }
