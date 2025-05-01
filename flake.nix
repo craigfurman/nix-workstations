@@ -45,32 +45,9 @@
         else
           nixpkgs-unstable;
 
-      crossPlatformPackages = forAllSystems (
-        system:
-        let
-          pkgs = (systemNixpkgs system).legacyPackages.${system};
-        in
-        {
-          tinted-vim = pkgs.callPackage ./pkgs/tinted-vim.nix { };
-        }
-      );
-
-      macPackages = craigLib.forEachSystem [ macSystem ] (
-        system:
-        let
-          pkgs = (systemNixpkgs system).legacyPackages.${system};
-        in
-        {
-          bluesnooze = pkgs.callPackage ./pkgs/bluesnooze.nix { };
-        }
-      );
-
       secrets = import ./secrets/user.nix;
     in
     {
-
-      packages = lib.recursiveUpdate crossPlatformPackages macPackages;
-
       darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem (
         let
           system = macSystem;
@@ -78,10 +55,6 @@
           home-manager = hm-darwin;
 
           overlay = final: prev: {
-            bluesnooze = self.packages.${system}.bluesnooze;
-            vimPlugins = prev.vimPlugins // {
-              tinted-vim = self.packages.${system}.tinted-vim;
-            };
           };
         in
         {
@@ -127,9 +100,6 @@
                 url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-${version}.tar.xz ";
                 hash = "sha256-ZM7j+kUpmWJUQdAGbsfwOqsNV8oE0U2t6qnw0b7pT4g=";
               };
-            };
-            vimPlugins = prev.vimPlugins // {
-              tinted-vim = self.packages.${system}.tinted-vim;
             };
           };
         in
