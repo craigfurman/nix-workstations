@@ -2,9 +2,6 @@ chargin-chuck
 - "steam machine"? look into gameScope and gameScopeSession
 - weird graphics issues when waking from sleep
 
-thwomp
-- sleep on a cron
-
 lakitu
 - when bluesnooze package path changes, it stops launching at login
 
