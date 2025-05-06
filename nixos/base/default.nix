@@ -22,4 +22,6 @@
     config.allowUnfree = true;
     overlays = [ overlay ];
   };
+
+  security.pam.sshAgentAuth.enable = true;
 }

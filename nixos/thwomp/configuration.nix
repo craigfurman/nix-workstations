@@ -74,8 +74,6 @@
     extraGroups = [ "wheel" ];
   };
 
-  security.sudo.wheelNeedsPassword = false;
-
   services.custom.nordvpn = {
     enable = true;
     users = [ "craig" ];
