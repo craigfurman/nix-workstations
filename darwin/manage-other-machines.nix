@@ -27,9 +27,11 @@
 
         Host chargin-chuck
           Hostname 192.168.1.115
+          ForwardAgent yes
 
         Host thwomp
           Hostname 192.168.1.105
+          ForwardAgent yes
       '';
 
       environment.systemPackages = [ nixosRebuildHost ];
