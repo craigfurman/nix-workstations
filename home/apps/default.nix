@@ -9,6 +9,7 @@ lib.mkIf pkgs.stdenv.isDarwin {
   # but I want to reuse the trampoline script without having too much
   # indirection.
   home.packages = with pkgs; [
+    # ideally this would live in the bluesnooze darwin module
     bluesnooze
   ];
 }
