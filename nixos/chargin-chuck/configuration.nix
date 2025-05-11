@@ -107,6 +107,7 @@
   environment.systemPackages = with pkgs; [
     bitwarden-desktop
     brave
+    discord
   ];
 
   services.custom.ssh-server = {
