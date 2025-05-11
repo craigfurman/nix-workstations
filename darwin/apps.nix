@@ -5,6 +5,11 @@
   homebrew = {
     enable = true;
 
+    brews = [
+      # Don't uninstall mas after every run
+      { name = "mas"; }
+    ];
+
     casks =
       let
         cask = name: { name = name; };
