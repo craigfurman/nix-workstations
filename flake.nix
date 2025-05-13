@@ -88,19 +88,10 @@
 
       nixosConfigurations =
         let
-          system = linuxSystem;
           nixpkgs = nixos-unstable;
           home-manager = hm-linux;
 
           overlay = final: prev: {
-            # TODO remove when linux-firmware bumped beyond 20250410
-            linux-firmware = prev.linux-firmware.overrideAttrs rec {
-              version = "20250311";
-              src = prev.fetchzip {
-                url = "https://cdn.kernel.org/pub/linux/kernel/firmware/linux-firmware-${version}.tar.xz ";
-                hash = "sha256-ZM7j+kUpmWJUQdAGbsfwOqsNV8oE0U2t6qnw0b7pT4g=";
-              };
-            };
           };
         in
         {
