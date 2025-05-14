@@ -22,11 +22,12 @@
 
     settings =
       {
-        cursor_blink_interval = 0;
+        confirm_os_window_close = 0;
         copy_on_select = true;
+        cursor_blink_interval = 0;
+        enable_audio_bell = "no";
         enabled_layouts = "splits,stack";
         hide_window_decorations = true;
-        confirm_os_window_close = 0;
         scrollback_lines = 20000;
         scrollback_pager_history_size = 10; # MB
       }
