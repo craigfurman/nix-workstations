@@ -3,7 +3,7 @@ let
   tintedShellRepo = builtins.fetchGit {
     url = "https://github.com/tinted-theming/tinted-shell.git";
     ref = "main";
-    rev = "839f96d22a5b3a702444b2b19513b2e751ff748a";
+    rev = "7b81c394be07b3e7a3a4713c6ab0e2154eb90e14";
   };
 in
 {

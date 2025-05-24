@@ -34,7 +34,10 @@
           "/Applications/WhatsApp.app"
         ]
         ++ map (
-          hmApp: "${config.users.users.craig.home}/Applications/Home Manager Apps/${hmApp}.app"
+          hmApp:
+          "${
+            config.users.users.${config.system.primaryUser}.home
+          }/Applications/Home Manager Apps/${hmApp}.app"
         ) hmApps;
     };
 
@@ -56,5 +59,5 @@
   system.startup.chime = false;
 
   # Integrates with home-manager
-  users.users.craig.home = "/Users/craig";
+  users.users.${config.system.primaryUser}.home = "/Users/${config.system.primaryUser}";
 }

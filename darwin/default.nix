@@ -22,7 +22,9 @@
     ./settings.nix
   ];
 
-  environment.etc.nix-darwin.source = "${config.users.users.craig.home}/.config/nix-darwin";
+  environment.etc.nix-darwin.source = "${
+    config.users.users.${config.system.primaryUser}.home
+  }/.config/nix-darwin";
 
   nix = {
     # Clean up old darwin generations. I believe this will run as root. HM
@@ -40,7 +42,9 @@
 
     settings = {
       experimental-features = "nix-command flakes";
-      trusted-users = [ "craig" ];
+      trusted-users = [ config.system.primaryUser ];
     };
   };
+
+  system.primaryUser = "craig";
 }
