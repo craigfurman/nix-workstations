@@ -14,29 +14,29 @@
 
     casks =
       let
-        cask = name: { name = name; };
-      in
-      [
-        # casks that auto-update, and therefore don't need to be brew-upgraded
-        # once installed
-        # (cask "brave-browser") # TODO uncomment on a fresh machine
-        (cask "discord")
-        (cask "google-chrome")
-        (cask "obsidian")
-        (cask "rectangle")
-        (cask "signal")
-        (cask "slack")
-        (cask "steam")
-        (cask "visual-studio-code")
-        (cask "vlc")
-        (cask "whatsapp")
-        (cask "zoom")
+        casks = [
+          # casks that auto-update, and therefore don't need to be brew-upgraded
+          # once installed
+          # "brave-browser" # TODO uncomment on a fresh machine
+          "discord"
+          "google-chrome"
+          "obsidian"
+          "rectangle"
+          "signal"
+          "slack"
+          "steam"
+          "visual-studio-code"
+          "vlc"
+          "whatsapp"
+          "zoom"
 
-        # This must run from /Applications. This is the easiest route, even
-        # though it won't update. I'll have to manually brew-upgrade it from
-        # time to time, which is a bit sad.
-        (cask "secretive")
-      ];
+          # This must run from /Applications. This is the easiest route, even
+          # though it won't update. I'll have to manually brew-upgrade it from
+          # time to time, which is a bit sad.
+          "secretive"
+        ];
+      in
+      map (cask: { name = cask; }) casks;
 
     masApps = {
       Bitwarden = 1352778147;
