@@ -12,8 +12,11 @@
     ./settings.nix
   ];
 
-  nixpkgs.hostPlatform = system;
-  nixpkgs.overlays = [ overlay ];
+  nixpkgs = {
+    config.allowUnfree = true;
+    hostPlatform = system;
+    overlays = [ overlay ];
+  };
 
   system.primaryUser = "craig";
 
