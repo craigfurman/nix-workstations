@@ -22,6 +22,7 @@ in
 
     # Keep effectively unlimited history
     history.save = 1000000000;
+    history.size = 1000000000;
 
     initContent = ''
       source ${tintedShellRepo}/profile_helper.sh
