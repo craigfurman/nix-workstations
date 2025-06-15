@@ -15,9 +15,6 @@
     ./gnome.nix
     ./hardware-configuration.nix
     ./nvidia.nix
-
-    # TODO extract the ssh config to somewhere other than darwin
-    ../../darwin/manage-other-machines.nix
   ];
 
   # Bootloader.
