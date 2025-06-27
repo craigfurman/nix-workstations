@@ -86,4 +86,6 @@ lib.recursiveUpdate {
       "  !.git"
     ];
   };
+
+  programs.zoxide.enable = true;
 } extra
