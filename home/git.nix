@@ -66,6 +66,7 @@
       push = {
         autoSetupRemote = true;
       };
+      rebase.autoStash = true;
       tag.sort = "version:refname";
       user = {
         name = "Craig Furman";
