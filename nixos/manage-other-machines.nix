@@ -7,8 +7,8 @@
 {
   options.manageOtherMachines = {
     enable = lib.mkEnableOption "manageOtherMachines";
-    flakePath = lib.mkOption { type = lib.types.string; };
-    user = lib.mkOption { type = lib.types.string; };
+    flakePath = lib.mkOption { type = lib.types.str; };
+    user = lib.mkOption { type = lib.types.str; };
   };
 
   config =

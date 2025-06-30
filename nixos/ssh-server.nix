@@ -6,7 +6,7 @@
     authorizedKeys =
       with lib;
       mkOption {
-        type = types.listOf types.string;
+        type = types.listOf types.lines;
       };
   };
 
