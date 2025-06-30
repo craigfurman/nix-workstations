@@ -1,4 +1,5 @@
 {
+  config,
   flake,
   overlay,
   system,
@@ -6,11 +7,17 @@
 }:
 {
   imports = [
+    ../nixos/manage-other-machines.nix
     ./apps.nix
-    ./manage-other-machines.nix
     ./nix.nix
     ./settings.nix
   ];
+
+  manageOtherMachines = {
+    enable = true;
+    flakePath = "/etc/nix-darwin";
+    user = config.system.primaryUser;
+  };
 
   nixpkgs = {
     config.allowUnfree = true;

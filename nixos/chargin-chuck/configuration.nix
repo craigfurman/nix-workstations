@@ -11,6 +11,7 @@
 {
   imports = [
     ../base
+    ../manage-other-machines.nix
     ./games.nix
     ./gnome.nix
     ./hardware-configuration.nix
@@ -21,6 +22,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 2;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  manageOtherMachines = {
+    enable = true;
+    flakePath = "/etc/nixos";
+    user = "craig";
+  };
 
   networking.hostName = "chargin-chuck";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
