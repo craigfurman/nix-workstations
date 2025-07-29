@@ -101,6 +101,7 @@
         let
           nixpkgs = nixos-unstable;
           home-manager = hm-linux;
+          system = linuxSystem;
 
           overlay = final: prev: {
           };
@@ -131,6 +132,7 @@
                         gnomeExtensions
                         nixpkgs
                         secrets
+                        system
                         ;
                     };
                   };
