@@ -35,7 +35,7 @@
           StrictHostKeyChecking accept-new
 
         Host chargin-chuck
-          Hostname 192.168.1.115
+          Hostname 192.168.1.217
           ForwardAgent yes
           User ${cfg.user}
 
