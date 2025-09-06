@@ -1,7 +1,7 @@
 { gnomeExtensions, pkgs, ... }:
 {
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.gdm.enableGnomeKeyring = true; # doesn't work
 
   services.udev.packages = with pkgs; [
     gnome-settings-daemon
