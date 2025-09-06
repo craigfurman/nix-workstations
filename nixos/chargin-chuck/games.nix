@@ -15,6 +15,7 @@
     in
     [
       azahar
+      dualsensectl
       dolphin-emu
       retroarchWithCores
       steam-rom-manager
