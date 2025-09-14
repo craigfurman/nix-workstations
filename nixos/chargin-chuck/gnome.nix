@@ -7,7 +7,10 @@
     gnome-settings-daemon
   ];
 
-  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  };
   services.desktopManager.gnome.enable = true;
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229

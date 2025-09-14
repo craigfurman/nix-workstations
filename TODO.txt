@@ -2,8 +2,6 @@ lakitu
 - when bluesnooze package path changes, it stops launching at login
 
 chargin-chuck
-- "steam machine"? look into gameScope and gameScopeSession
-- weird graphics issues when waking from sleep
 
 thwomp
 - switch to upstream nordvpn when that PR is merged
