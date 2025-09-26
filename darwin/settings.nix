@@ -26,7 +26,6 @@
           hmApps = [ "kitty" ];
         in
         [
-          "/System/Applications/Launchpad.app"
           "/Applications/Brave Browser.app"
           "/Applications/Todoist.app"
           "/Applications/Discord.app"
