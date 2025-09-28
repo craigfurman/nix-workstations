@@ -1,25 +1,34 @@
-local lspconfig = require('lspconfig')
-local configs = require 'lspconfig.configs'
-
 function lsp_imports(timeout_ms)
+  -- The position_encoding param defaults to the encoding of the first attached
+  -- client. This introduces the possibility of a bug in which the first client
+  -- has a non-standard position encoding but does not support code actions. We
+  -- will send that irrelevant and possibly-wrong position encoding to the
+  -- clients that actually do support code actions.
   local params = vim.lsp.util.make_range_params()
   params.context = {only = {"source.organizeImports"}}
+
   local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
-  for _, res in pairs(result or {}) do
-    for _, r in pairs(res.result or {}) do
-      if r.edit then
-        vim.lsp.util.apply_workspace_edit(r.edit, get_offset_encoding())
-      else
-        vim.lsp.buf.execute_command(r.command)
+  for client_id, res in pairs(result or {}) do
+    if res.error then
+      local msg = string.format("LSP error code %d: %s", res.error.code, res.error.message)
+      vim.notify(msg)
+      return
+    end
+
+    if not res.result then
+      return
+    end
+
+    for _, codeAction in ipairs(res.result) do
+      if codeAction.edit then
+        local offset_encoding = vim.lsp.get_client_by_id(client_id).offset_encoding
+        vim.lsp.util.apply_workspace_edit(codeAction.edit, offset_encoding)
+      end
+      if codeAction.command then
+        vim.lsp.buf.execute_command(codeAction.command)
       end
     end
   end
-end
-
-function get_offset_encoding()
-  -- Just use the first client. In the future, perhaps parameterise this with
-  -- the desired client name.
-  return vim.lsp.buf_get_clients()[1].offset_encoding
 end
 
 function lsp_imports_and_format(timeout_ms)
