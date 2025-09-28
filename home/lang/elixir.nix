@@ -1,21 +1,12 @@
 {
   craigLib,
   pkgs,
-  system,
   ...
 }:
-let
-  pinnedNixpkgs = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/05580f4b4433fda48fff30f60dfd303d6ee05d21.tar.gz";
-    sha256 = "sha256:073raa2a5f72xqkz0k481djq9xvz0bgxbhffzw5aqlv5iagzbmap";
-  }) { inherit system; };
-in
 {
-  home.packages = [
-    pkgs.elixir
-
-    # https://github.com/elixir-lsp/elixir-ls/issues/1219
-    pinnedNixpkgs.elixir-ls
+  home.packages = with pkgs; [
+    elixir
+    elixir-ls
   ];
 
   home.sessionVariables = {
@@ -37,12 +28,12 @@ in
         ];
       in
       ''
-        ${craigLib.neovim.preSaveCommand extensions "lua lsp_imports_and_format({})"}
+        ${craigLib.neovim.preSaveCommand extensions "lua vim.lsp.buf.format({timeout_ms=1000})"}
       '';
 
     extraLuaConfig = ''
       require'lspconfig'.elixirls.setup{
-        cmd = { "${"${pinnedNixpkgs.elixir-ls}/lib/language_server.sh"}" },
+        cmd = { "${"${pkgs.elixir-ls}/scripts/language_server.sh"}" },
       }
     '';
   };
