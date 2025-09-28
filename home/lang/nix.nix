@@ -12,7 +12,7 @@
         extensions = [ "nix" ];
       in
       ''
-        ${craigLib.neovim.preSaveCommand extensions "lua lsp_imports_and_format(1000)"}
+        ${craigLib.neovim.preSaveCommand extensions "lua vim.lsp.buf.format({timeout_ms=1000})"}
       '';
 
     extraLuaConfig = builtins.readFile ./nil-ls.lua;
