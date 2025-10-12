@@ -1,6 +1,3 @@
-local lspconfig = require('lspconfig')
-local configs = require 'lspconfig.configs'
-
 goplsSettings = {
   analyses = {
     composites = false
@@ -11,10 +8,11 @@ goplsSettings['local'] = os.getenv("GOPLS_SETTINGS_LOCAL") or ''
 -- For some repos at my work
 goplsSettings['buildFlags'] = {'-tags', 'integration,e2e'}
 
-lspconfig.gopls.setup{
+vim.lsp.config('gopls', {
   settings = {
     gopls = goplsSettings
   }
-}
+})
+vim.lsp.enable('gopls')
 
-lspconfig.golangci_lint_ls.setup{}
+vim.lsp.enable('golangci_lint_ls')

@@ -1,4 +1,4 @@
-require('lspconfig').nil_ls.setup {
+vim.lsp.config('nil_ls', {
   settings = {
     ['nil'] = {
       formatting = {
@@ -6,4 +6,5 @@ require('lspconfig').nil_ls.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable('nil_ls')

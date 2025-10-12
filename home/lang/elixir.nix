@@ -32,9 +32,10 @@
       '';
 
     extraLuaConfig = ''
-      require'lspconfig'.elixirls.setup{
+      vim.lsp.config('elixirls', {
         cmd = { "${"${pkgs.elixir-ls}/scripts/language_server.sh"}" },
-      }
+      })
+      vim.lsp.enable('elixirls')
     '';
   };
 }
