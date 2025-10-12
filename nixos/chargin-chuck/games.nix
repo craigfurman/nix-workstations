@@ -6,8 +6,6 @@
       retroarchWithCores = retroarch.withCores (
         cores: with cores; [
           bsnes
-          citra
-          dolphin
           gambatte
           mupen64plus
         ]
