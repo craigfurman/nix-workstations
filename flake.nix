@@ -73,7 +73,10 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.craig = import ./home {
-                  backup.enable = true;
+                  backup = {
+                    enable = true;
+                    enableService = true;
+                  };
                 };
 
                 # I don't know why, but darwin's specialArgs doesn't propagate
@@ -123,6 +126,7 @@
                     useGlobalPkgs = true;
                     useUserPackages = true;
                     users.craig = import ./home {
+                      backup.enable = true;
                       dconf.enable = true;
                     };
 

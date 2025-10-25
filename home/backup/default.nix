@@ -1,28 +1,39 @@
 {
   config,
-  craigLib,
   lib,
   pkgs,
   secrets,
   ...
 }:
 let
-  cfg = config.backup;
+  restic = pkgs.writeShellApplication {
+    name = "restic";
+    runtimeInputs = [ pkgs.restic ];
+    text = ''
+      RESTIC_REPOSITORY=${secrets.backup.RESTIC_REPOSITORY} \
+        RESTIC_PASSWORD=${secrets.backup.RESTIC_PASSWORD} \
+        B2_ACCOUNT_ID=${secrets.backup.B2_ACCOUNT_ID} \
+        B2_ACCOUNT_KEY=${secrets.backup.B2_ACCOUNT_KEY} \
+        restic "$@"
+    '';
+  };
 in
 {
-  options.backup.enable = lib.mkEnableOption "backup";
+  options.backup = {
+    enable = lib.mkEnableOption "backup";
+    enableService = lib.mkEnableOption "enableService";
+  };
 
-  config = lib.mkIf cfg.enable {
-    home.file.".config/backup/.envrc".text = craigLib.mkEnvrc secrets.backup;
-    home.packages = [ pkgs.restic ];
+  config = lib.mkIf config.backup.enable {
+    home.packages = [ restic ];
 
     launchd.agents.restic-backup = {
-      enable = true;
+      enable = config.backup.enableService && pkgs.stdenv.isDarwin;
       config = {
         ProgramArguments = [
           "${pkgs.bash}/bin/bash"
           "-c"
-          "source ~/.config/backup/.envrc && ${pkgs.restic}/bin/restic --cleanup-cache backup --exclude-file ${./excludes.txt} --one-file-system --exclude-caches --exclude-if-present .backupignore ~"
+          "${restic}/bin/restic --cleanup-cache backup --exclude-file ${./excludes.txt} --one-file-system --exclude-caches --exclude-if-present .backupignore ~"
         ];
 
         StartCalendarInterval = [
