@@ -18,10 +18,17 @@
     ./nvidia.nix
   ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 2;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/efi";
+    };
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 2;
+      xbootldrMountPoint = "/boot";
+    };
+  };
 
   manageOtherMachines = {
     enable = true;

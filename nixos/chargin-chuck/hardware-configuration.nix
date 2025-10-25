@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -31,13 +30,18 @@
     fsType = "ext4";
   };
 
-  fileSystems."/boot" = {
+  fileSystems."/efi" = {
     device = "/dev/disk/by-uuid/2A95-FF61";
     fsType = "vfat";
     options = [
       "fmask=0077"
       "dmask=0077"
     ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/0F87-EB29";
+    fsType = "vfat";
   };
 
   swapDevices = [ ];
