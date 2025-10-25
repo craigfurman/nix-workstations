@@ -25,7 +25,7 @@
     };
     systemd-boot = {
       enable = true;
-      configurationLimit = 2;
+      configurationLimit = 10;
       xbootldrMountPoint = "/boot";
     };
   };
