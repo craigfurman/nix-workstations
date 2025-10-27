@@ -6,7 +6,6 @@
 {
   home.packages = with pkgs; [
     elixir
-    elixir-ls
   ];
 
   home.sessionVariables = {
