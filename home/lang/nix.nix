@@ -1,8 +1,6 @@
 { craigLib, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    nil
-  ];
+  home.packages = [ pkgs.nixfmt-rfc-style ];
 
   programs.neovim = {
     craigExtensions.treesitterParsers = [ "nix" ];
@@ -16,5 +14,6 @@
       '';
 
     extraLuaConfig = builtins.readFile ./nil-ls.lua;
+    extraPackages = [ pkgs.nil ];
   };
 }

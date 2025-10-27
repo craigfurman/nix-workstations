@@ -47,7 +47,6 @@ lib.recursiveUpdate {
         curl
         fd
         htop
-        nixfmt-rfc-style
         tree
         unixtools.watch
         wget
