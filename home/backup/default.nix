@@ -10,11 +10,11 @@ let
     name = "restic";
     runtimeInputs = [ pkgs.restic ];
     text = ''
-      RESTIC_REPOSITORY=${secrets.backup.RESTIC_REPOSITORY} \
-        RESTIC_PASSWORD=${secrets.backup.RESTIC_PASSWORD} \
-        B2_ACCOUNT_ID=${secrets.backup.B2_ACCOUNT_ID} \
-        B2_ACCOUNT_KEY=${secrets.backup.B2_ACCOUNT_KEY} \
-        restic "$@"
+      export RESTIC_REPOSITORY=${secrets.backup.RESTIC_REPOSITORY}
+      export RESTIC_PASSWORD=${secrets.backup.RESTIC_PASSWORD}
+      export B2_ACCOUNT_ID=${secrets.backup.B2_ACCOUNT_ID}
+      export B2_ACCOUNT_KEY=${secrets.backup.B2_ACCOUNT_KEY}
+      exec restic "$@"
     '';
   };
 in
