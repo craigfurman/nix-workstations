@@ -1,5 +1,5 @@
 lakitu
-- when bluesnooze package path changes, it stops launching at login
+- bluesnooze won't launch on mac at startup anymore
 
 chargin-chuck
 
