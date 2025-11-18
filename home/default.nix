@@ -27,6 +27,7 @@ lib.recursiveUpdate {
     ./neovim-kitty-integration.nix
     ./shell
     ./ssh.nix
+    ./tmux
   ];
 
   home.packages =
