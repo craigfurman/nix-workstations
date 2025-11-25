@@ -121,11 +121,6 @@
     discord
   ];
 
-  services.custom.ssh-server = {
-    enable = true;
-    authorizedKeys = secrets.authorizedKeys;
-  };
-
   swapDevices = [
     {
       device = "/var/lib/swapfile";

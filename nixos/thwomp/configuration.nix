@@ -79,11 +79,6 @@
     users = [ "craig" ];
   };
 
-  services.custom.ssh-server = {
-    enable = true;
-    authorizedKeys = secrets.authorizedKeys;
-  };
-
   services.plex = {
     enable = true;
     dataDir = "/media/data/plex";

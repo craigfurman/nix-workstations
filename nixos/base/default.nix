@@ -1,7 +1,7 @@
 { config, overlay, ... }:
 {
   imports = [
-    ../ssh-server.nix
+    ./ssh.nix
   ];
 
   environment.etc.nixos.source = "${config.users.users.craig.home}/.config/nixos";
@@ -23,5 +23,4 @@
     overlays = [ overlay ];
   };
 
-  security.pam.sshAgentAuth.enable = true;
 }
