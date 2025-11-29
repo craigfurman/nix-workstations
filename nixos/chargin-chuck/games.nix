@@ -19,6 +19,9 @@
       steam-rom-manager
     ];
 
+  # individual steam games can be made to use this
+  programs.gamemode.enable = true;
+
   # Can boot into this, but I choose not to for now. I'm not actually 100% sure
   # programs.steam.gamescopeSession is doing anything.
   programs.gamescope = {
