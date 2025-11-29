@@ -12,6 +12,8 @@
       options = "--delete-older-than 14d";
     };
 
+    optimise.automatic = true;
+
     # For building linux packages in a qemu VM. I don't want to leave this on
     # all the time, so it is disabled usually.
     linux-builder = {
