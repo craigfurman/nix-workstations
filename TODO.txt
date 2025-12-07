@@ -1,5 +1,6 @@
 lakitu
-- bluesnooze won't launch on mac at startup anymore
+- ssh migration: delete "file" key. Create new file key for lakitu. Migrate away
+  from needing old keys on servers
 
 chargin-chuck
 
