@@ -29,11 +29,6 @@
           "vlc"
           "whatsapp"
           "zoom"
-
-          # This must run from /Applications. This is the easiest route, even
-          # though it won't update. I'll have to manually brew-upgrade it from
-          # time to time, which is a bit sad.
-          "secretive"
         ];
       in
       map (cask: { name = cask; }) casks;

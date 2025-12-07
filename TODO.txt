@@ -1,9 +1,3 @@
-lakitu
-- ssh migration: delete "file" key. Create new file key for lakitu. Migrate away
-  from needing old keys on servers
-
-chargin-chuck
-
 thwomp
 - switch to upstream nordvpn when that PR is merged
 
