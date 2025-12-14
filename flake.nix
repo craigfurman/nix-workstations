@@ -82,12 +82,7 @@
                 # I don't know why, but darwin's specialArgs doesn't propagate
                 # through to home-manager, although the docs imply it should.
                 extraSpecialArgs = {
-                  inherit
-                    craigLib
-                    nixpkgs
-                    secrets
-                    system
-                    ;
+                  inherit craigLib nixpkgs secrets;
                 };
               };
             }
@@ -104,7 +99,6 @@
         let
           nixpkgs = nixos-unstable;
           home-manager = hm-linux;
-          system = linuxSystem;
 
           overlay = final: prev: {
           };
@@ -136,7 +130,6 @@
                         gnomeExtensions
                         nixpkgs
                         secrets
-                        system
                         ;
                     };
                   };
