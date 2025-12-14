@@ -1,8 +1,4 @@
 lib: {
-  forEachSystem =
-    systems: systemFn:
-    builtins.foldl' (merged: system: merged // { ${system} = (systemFn system); }) { } systems;
-
   neovim =
     let
       formatAutocmd =

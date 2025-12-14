@@ -36,34 +36,50 @@
       lib = nixpkgs-unstable.lib;
       craigLib = (import ./lib) lib;
 
+      forSystem =
+        system: systemFn:
+        let
+          nixpkgs =
+            if nixpkgs-unstable.legacyPackages.${system}.stdenv.isLinux then
+              nixos-unstable
+            else
+              nixpkgs-unstable;
+          pkgs = import nixpkgs { inherit system; };
+          home-manager = if pkgs.stdenv.isLinux then hm-linux else hm-darwin;
+        in
+        systemFn {
+          inherit
+            home-manager
+            nixpkgs
+            pkgs
+            system
+            ;
+        };
+
+      forEachSystem = systems: systemFn: lib.genAttrs systems (system: forSystem system systemFn);
+
       macSystem = "aarch64-darwin";
       linuxSystem = "x86_64-linux";
 
-      forAllSystems = craigLib.forEachSystem [
+      forAllSystems = forEachSystem [
         macSystem
         linuxSystem
       ];
 
-      systemNixpkgs =
-        system:
-        if nixpkgs-unstable.legacyPackages.${system}.stdenv.isLinux then
-          nixos-unstable
-        else
-          nixpkgs-unstable;
-
       secrets = import ./secrets/user.nix;
+
+      overlay = final: prev: {
+      };
     in
     {
-      darwinConfigurations.lakitu = nix-darwin.lib.darwinSystem (
-        let
-          system = macSystem;
-          nixpkgs = nixpkgs-unstable;
-          home-manager = hm-darwin;
-
-          overlay = final: prev: {
-          };
-        in
+      darwinConfigurations.lakitu = forSystem macSystem (
         {
+          home-manager,
+          nixpkgs,
+          system,
+          ...
+        }:
+        nix-darwin.lib.darwinSystem {
           modules = [
             (import ./darwin)
 
@@ -95,14 +111,8 @@
         }
       );
 
-      nixosConfigurations =
-        let
-          nixpkgs = nixos-unstable;
-          home-manager = hm-linux;
-
-          overlay = final: prev: {
-          };
-        in
+      nixosConfigurations = forSystem linuxSystem (
+        { home-manager, nixpkgs, ... }:
         {
           chargin-chuck =
             let
@@ -151,12 +161,11 @@
               secrets = secrets // (import ./secrets/thwomp.nix);
             };
           };
-        };
+        }
+      );
 
       lib = craigLib;
 
-      formatter = forAllSystems (
-        system: (systemNixpkgs system).legacyPackages.${system}.nixfmt-rfc-style
-      );
+      formatter = forAllSystems ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
     };
 }
