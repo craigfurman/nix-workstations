@@ -1,5 +1,6 @@
 extra:
 {
+  flake,
   lib,
   nixpkgs,
   pkgs,
@@ -28,6 +29,7 @@ lib.recursiveUpdate {
     ./shell
     ./ssh.nix
     ./tmux
+    flake.homeManagerModules.autokbisw
   ];
 
   home.packages =
@@ -88,4 +90,5 @@ lib.recursiveUpdate {
   };
 
   programs.zoxide.enable = true;
+  services.autokbisw.enable = pkgs.stdenv.isDarwin;
 } extra

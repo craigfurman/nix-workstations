@@ -1,6 +1,5 @@
 {
   imports = [
-    ./autokbisw.nix
     ./bluesnooze.nix
   ];
 

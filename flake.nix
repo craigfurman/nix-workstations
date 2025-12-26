@@ -72,6 +72,11 @@
       };
     in
     {
+      homeManagerModules = {
+        autokbisw = ./modules/home-manager/autokbisw.nix;
+      };
+      lib = craigLib;
+
       darwinConfigurations.lakitu = forSystem macSystem (
         {
           home-manager,
@@ -99,6 +104,7 @@
                 # through to home-manager, although the docs imply it should.
                 extraSpecialArgs = {
                   inherit craigLib nixpkgs secrets;
+                  flake = self;
                 };
               };
             }
@@ -135,6 +141,7 @@
                     };
 
                     extraSpecialArgs = {
+                      flake = self;
                       inherit
                         craigLib
                         gnomeExtensions
@@ -163,8 +170,6 @@
           };
         }
       );
-
-      lib = craigLib;
 
       formatter = forAllSystems ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
     };
