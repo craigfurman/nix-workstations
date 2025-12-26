@@ -10,8 +10,6 @@
 
 {
   imports = [
-    ../base
-    ../nordvpn.nix
     ./hardware-configuration.nix
     ./suspend-nightly.nix
   ];

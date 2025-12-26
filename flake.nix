@@ -129,7 +129,8 @@
             in
             nixpkgs.lib.nixosSystem {
               modules = [
-                ./nixos/chargin-chuck/configuration.nix
+                ./machines/chargin-chuck/configuration.nix
+                ./modules/nixos/base
                 home-manager.nixosModules.home-manager
                 {
                   home-manager = {
@@ -160,7 +161,9 @@
 
           thwomp = nixpkgs.lib.nixosSystem {
             modules = [
-              ./nixos/thwomp/configuration.nix
+              ./machines/thwomp/configuration.nix
+              ./modules/nixos/base
+              ./modules/nixos/nordvpn.nix
             ];
 
             specialArgs = {

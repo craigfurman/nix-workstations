@@ -9,7 +9,6 @@
 
 {
   imports = [
-    ../base
     ./games.nix
     ./gnome.nix
     ./hardware-configuration.nix
