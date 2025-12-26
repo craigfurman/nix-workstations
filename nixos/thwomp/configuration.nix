@@ -74,7 +74,7 @@
     extraGroups = [ "wheel" ];
   };
 
-  services.custom.nordvpn = {
+  services.nordvpn = {
     enable = true;
     users = [ "craig" ];
   };

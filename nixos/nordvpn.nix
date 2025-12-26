@@ -117,7 +117,7 @@ let
 in
 with lib;
 {
-  options.services.custom.nordvpn = {
+  options.services.nordvpn = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -136,7 +136,7 @@ with lib;
 
   config =
     let
-      cfg = config.services.custom.nordvpn;
+      cfg = config.services.nordvpn;
     in
     mkIf cfg.enable {
       networking.firewall.checkReversePath = false;
