@@ -86,7 +86,7 @@
         }:
         nix-darwin.lib.darwinSystem {
           modules = [
-            (import ./darwin)
+            (import ./machines/lakitu)
 
             home-manager.darwinModules.home-manager
             {

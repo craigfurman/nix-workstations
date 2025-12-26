@@ -4,14 +4,12 @@
 
 {
   pkgs,
-  secrets,
   ...
 }:
 
 {
   imports = [
     ../base
-    ../manage-other-machines.nix
     ./games.nix
     ./gnome.nix
     ./hardware-configuration.nix
@@ -28,12 +26,6 @@
       configurationLimit = 10;
       xbootldrMountPoint = "/boot";
     };
-  };
-
-  manageOtherMachines = {
-    enable = true;
-    flakePath = "/etc/nixos";
-    user = "craig";
   };
 
   networking.hostName = "chargin-chuck";
