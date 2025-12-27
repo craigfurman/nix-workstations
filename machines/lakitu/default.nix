@@ -22,4 +22,9 @@
 
   system.configurationRevision = flake.rev or flake.dirtyRev or null;
   system.stateVersion = 5;
+
+  services.bluesnooze = {
+    enable = true;
+    hideIcon = true;
+  };
 }

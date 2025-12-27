@@ -71,6 +71,9 @@
       };
     in
     {
+      darwinModules = {
+        bluesnooze = ./modules/darwin/bluesnooze.nix;
+      };
       homeManagerModules = {
         autokbisw = ./modules/home-manager/autokbisw.nix;
       };
@@ -86,6 +89,7 @@
         }:
         nix-darwin.lib.darwinSystem {
           modules = [
+            self.darwinModules.bluesnooze
             (import ./machines/lakitu)
 
             home-manager.darwinModules.home-manager

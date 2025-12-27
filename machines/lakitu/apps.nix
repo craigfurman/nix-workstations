@@ -1,8 +1,4 @@
 {
-  imports = [
-    ./bluesnooze.nix
-  ];
-
   homebrew = {
     enable = true;
 
