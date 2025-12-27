@@ -34,7 +34,6 @@
     }:
     let
       lib = nixpkgs-unstable.lib;
-      craigLib = (import ./lib) lib;
 
       forSystem =
         system: systemFn:
@@ -75,7 +74,8 @@
       homeManagerModules = {
         autokbisw = ./modules/home-manager/autokbisw.nix;
       };
-      lib = craigLib;
+
+      lib = (import ./lib lib);
 
       darwinConfigurations.lakitu = forSystem macSystem (
         {
@@ -103,7 +103,7 @@
                 # I don't know why, but darwin's specialArgs doesn't propagate
                 # through to home-manager, although the docs imply it should.
                 extraSpecialArgs = {
-                  inherit craigLib nixpkgs secrets;
+                  inherit nixpkgs secrets;
                   flake = self;
                 };
               };
@@ -143,12 +143,7 @@
 
                     extraSpecialArgs = {
                       flake = self;
-                      inherit
-                        craigLib
-                        gnomeExtensions
-                        nixpkgs
-                        secrets
-                        ;
+                      inherit gnomeExtensions nixpkgs secrets;
                     };
                   };
                 }

@@ -1,5 +1,5 @@
 {
-  craigLib,
+  flake,
   pkgs,
   ...
 }:
@@ -27,7 +27,7 @@
         ];
       in
       ''
-        ${craigLib.neovim.preSaveCommand extensions "lua vim.lsp.buf.format({timeout_ms=1000})"}
+        ${flake.lib.neovim.preSaveCommand extensions "lua vim.lsp.buf.format({timeout_ms=1000})"}
       '';
 
     extraLuaConfig = ''

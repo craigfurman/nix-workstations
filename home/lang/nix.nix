@@ -1,4 +1,4 @@
-{ craigLib, pkgs, ... }:
+{ flake, pkgs, ... }:
 {
   home.packages = [ pkgs.nixfmt-rfc-style ];
 
@@ -6,7 +6,7 @@
     craigf.treesitterParsers = [ "nix" ];
 
     extraConfig = ''
-      ${craigLib.neovim.preSaveCommand [ "nix" ] "lua vim.lsp.buf.format({timeout_ms=1000})"}
+      ${flake.lib.neovim.preSaveCommand [ "nix" ] "lua vim.lsp.buf.format({timeout_ms=1000})"}
     '';
 
     extraLuaConfig = "vim.lsp.enable('nixd')";

@@ -1,10 +1,10 @@
-{ craigLib, pkgs, ... }:
+{ flake, pkgs, ... }:
 {
   programs.neovim = {
     craigf.treesitterParsers = [ "python" ];
 
     extraConfig = ''
-      ${craigLib.neovim.preSaveCommand [ "py" ] "lua vim.lsp.buf.format({timeout_ms=1000})"}
+      ${flake.lib.neovim.preSaveCommand [ "py" ] "lua vim.lsp.buf.format({timeout_ms=1000})"}
     '';
 
     extraLuaConfig = ''
