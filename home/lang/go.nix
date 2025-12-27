@@ -6,7 +6,7 @@
   ];
 
   programs.neovim = {
-    craigExtensions.treesitterParsers = [ "go" ];
+    craigf.treesitterParsers = [ "go" ];
 
     extraConfig =
       let

@@ -13,7 +13,7 @@
   };
 
   programs.neovim = {
-    craigExtensions.treesitterParsers = [
+    craigf.treesitterParsers = [
       "elixir"
       "heex"
     ];

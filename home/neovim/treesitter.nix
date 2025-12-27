@@ -5,7 +5,7 @@
   ...
 }:
 {
-  options.programs.neovim.craigExtensions.treesitterParsers = lib.mkOption {
+  options.programs.neovim.craigf.treesitterParsers = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [ ];
   };
@@ -34,9 +34,9 @@
               "vimdoc"
               "yaml"
             ];
-            parsers = config.programs.neovim.craigExtensions.treesitterParsers ++ baseParsers;
+            parsers = config.programs.neovim.craigf.treesitterParsers ++ baseParsers;
           in
-          pkgs.vimPlugins.nvim-treesitter.withPlugins (p: builtins.map (parser: p.${parser}) parsers);
+          pkgs.vimPlugins.nvim-treesitter.withPlugins (p: map (parser: p.${parser}) parsers);
 
         type = "lua";
         config = builtins.readFile ./config/plugin/nvim-treesitter.lua;

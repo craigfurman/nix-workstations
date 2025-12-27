@@ -1,7 +1,7 @@
 { craigLib, pkgs, ... }:
 {
   programs.neovim = {
-    craigExtensions.treesitterParsers = [ "python" ];
+    craigf.treesitterParsers = [ "python" ];
 
     extraConfig = ''
       ${craigLib.neovim.preSaveCommand [ "py" ] "lua vim.lsp.buf.format({timeout_ms=1000})"}

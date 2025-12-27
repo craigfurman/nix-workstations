@@ -3,7 +3,7 @@
   home.packages = [ pkgs.nixfmt-rfc-style ];
 
   programs.neovim = {
-    craigExtensions.treesitterParsers = [ "nix" ];
+    craigf.treesitterParsers = [ "nix" ];
 
     extraConfig = ''
       ${craigLib.neovim.preSaveCommand [ "nix" ] "lua vim.lsp.buf.format({timeout_ms=1000})"}
