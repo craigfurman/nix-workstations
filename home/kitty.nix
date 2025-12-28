@@ -18,6 +18,7 @@
       "ctrl+shift+f6" = "launch --cwd=current --location=vsplit";
       "ctrl+shift+f7" = "layout_action rotate";
       "ctrl+shift+z" = "toggle_layout stack";
+      "f8" = "set_font_size 30"; # enormous font for screencasts
     };
 
     settings = {
