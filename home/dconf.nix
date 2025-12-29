@@ -15,6 +15,8 @@
         xkb-options = [ "caps:escape" ];
       };
       "org/gnome/desktop/interface" = {
+        enable-hot-corners = false;
+
         # This doesn't do anything, the type has to be an integer here even though
         # we've configured fractional scaling support below.
         # scaling-factor = 1.5;
