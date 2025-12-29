@@ -31,6 +31,7 @@
       };
 
       "org/gnome/shell" = {
+        disable-user-extensions = false;
         enabled-extensions = map (
           gnomeExtension: pkgs.gnomeExtensions.${gnomeExtension}.extensionUuid
         ) gnomeExtensions;
