@@ -1,3 +1,5 @@
+- Address nvim-treesitter breaking changes on next upgrade
+
 thwomp
 - switch to upstream nordvpn when that PR is merged
 
