@@ -66,9 +66,7 @@
       ];
 
       secrets = import ./secrets/user.nix;
-
-      overlay = final: prev: {
-      };
+      overlay = import ./overlay.nix;
     in
     {
       darwinModules = {
