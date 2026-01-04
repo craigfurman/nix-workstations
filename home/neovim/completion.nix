@@ -9,6 +9,7 @@
       cmp-buffer
       cmp-path
       cmp-cmdline
+      nvim-treesitter-endwise
 
       {
         plugin = luasnip;
@@ -26,17 +27,6 @@
         type = "lua";
         config = ''
           require("nvim-autopairs").setup {}
-        '';
-      }
-      {
-        plugin = nvim-treesitter-endwise;
-        type = "lua";
-        config = ''
-          require('nvim-treesitter.configs').setup {
-              endwise = {
-                  enable = true,
-              },
-          }
         '';
       }
     ];
