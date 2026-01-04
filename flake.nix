@@ -34,6 +34,7 @@
     }:
     let
       lib = nixpkgs-unstable.lib;
+      overlay = import ./overlay.nix;
 
       forSystem =
         system: systemFn:
@@ -43,7 +44,10 @@
               nixos-unstable
             else
               nixpkgs-unstable;
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ overlay ];
+          };
           home-manager = if pkgs.stdenv.isLinux then hm-linux else hm-darwin;
         in
         systemFn {
@@ -66,7 +70,6 @@
       ];
 
       secrets = import ./secrets/user.nix;
-      overlay = import ./overlay.nix;
     in
     {
       darwinModules = {
