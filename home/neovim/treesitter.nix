@@ -33,9 +33,7 @@
           "yaml"
         ];
         parsers = config.programs.neovim.craigf.treesitterParsers ++ baseParsers;
-      in
-      [
-        {
+        nvim-treesitter = {
           plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: map (parser: p.${parser}) parsers);
 
           type = "lua";
@@ -50,7 +48,29 @@
                 callback = function() vim.treesitter.start() end,
               })
             '';
-        }
+        };
+
+        rainbow-delimiters-nvim = {
+          plugin = pkgs.vimPlugins.rainbow-delimiters-nvim;
+          type = "lua";
+          config = ''
+            require('rainbow-delimiters.setup').setup {
+                highlight = {
+                    'RainbowDelimiterOrange',
+                    'RainbowDelimiterGreen',
+                    'RainbowDelimiterViolet',
+                    'RainbowDelimiterCyan',
+                    'RainbowDelimiterRed',
+                    'RainbowDelimiterYellow',
+                    'RainbowDelimiterBlue',
+                },
+            }
+          '';
+        };
+      in
+      [
+        nvim-treesitter
+        rainbow-delimiters-nvim
       ];
   };
 }
